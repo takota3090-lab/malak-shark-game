@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#0f0c1a">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>لوحتي | سعود</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>خواطر أفنان | سعود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,28 +16,34 @@
         }
 
         :root {
-            --bg-primary: #0a0a0f;
-            --bg-secondary: #12121a;
-            --bg-tertiary: #1a1a25;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-border-hover: rgba(255, 255, 255, 0.15);
-            --accent-gold: #d4af37;
-            --accent-gold-light: #f4d03f;
-            --accent-purple: #8b5cf6;
-            --accent-blue: #3b82f6;
-            --accent-rose: #f43f5e;
-            --accent-emerald: #10b981;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --text-tertiary: rgba(255, 255, 255, 0.5);
-            --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.15);
-            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --primary: #d4af37;
+            --primary-dark: #b8942e;
+            --primary-light: #e8c97a;
+            --primary-glow: rgba(212, 175, 55, 0.3);
+            --bg-dark: #0a0a12;
+            --bg-card: #12121c;
+            --bg-surface: #1a1a28;
+            --text-primary: #f5efe7;
+            --text-secondary: #cbc3b5;
+            --text-muted: #8b857a;
+            --mood-happy: #fbbf24;
+            --mood-thinking: #60a5fa;
+            --mood-calm: #34d399;
+            --mood-excited: #f97316;
+            --mood-grateful: #ec489a;
+            --mood-sad: #8b5cf6;
+            --mood-depressed: #6b7280;
+            --mood-stressed: #ef4444;
+            --border-light: rgba(212, 175, 55, 0.2);
+            --border-medium: rgba(212, 175, 55, 0.35);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.5);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-            background: var(--bg-primary);
+            font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
+            background: radial-gradient(ellipse at 30% 40%, #0f0f1a, #08080e);
             height: 100vh;
             overflow: hidden;
             color: var(--text-primary);
@@ -46,54 +51,57 @@
             width: 100%;
             top: 0;
             left: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
         }
 
-        /* Ambient background animation */
-        .ambient-bg {
+        /* Premium Animated Background */
+        .bg-stars {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
             z-index: 0;
-            overflow: hidden;
         }
-
-        .ambient-orb {
+        
+        .star {
             position: absolute;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, transparent 70%);
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 20s infinite ease-in-out;
+            animation: twinkle 4s infinite ease-in-out;
         }
-
-        .orb-1 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.2); }
         }
-
-        .orb-2 {
+        
+        .glow-aura {
+            position: fixed;
+            top: 20%;
+            right: -10%;
             width: 400px;
             height: 400px;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-rose));
-            bottom: -150px;
-            left: -150px;
-            animation-delay: -10s;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: drift 20s infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+        
+        .glow-aura-2 {
+            bottom: 10%;
+            left: -10%;
+            top: auto;
+            width: 350px;
+            height: 350px;
+            animation: drift 25s infinite reverse;
+        }
+        
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -20px); }
         }
 
         /* App Container */
@@ -103,417 +111,255 @@
             flex-direction: column;
             overflow: hidden;
             position: relative;
-            z-index: 1;
+            z-index: 10;
         }
 
-        /* Glassmorphism Header */
+        /* Premium Header */
         .app-header {
-            background: var(--glass-bg);
+            background: rgba(10, 10, 18, 0.85);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 1.2rem 1.5rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border-medium);
             flex-shrink: 0;
         }
 
         .logo-section h1 {
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
+            font-family: 'Amiri', 'Cairo', serif;
+            background: linear-gradient(135deg, #f5da9e, #e8c97a, #d4ae5a);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.5px;
+            color: transparent;
+            letter-spacing: -1px;
         }
 
         .logo-section p {
             font-size: 0.65rem;
-            color: var(--text-tertiary);
-            margin-top: 0.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .time-section {
-            text-align: left;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 0.6rem 1rem;
-            backdrop-filter: blur(10px);
-        }
-
-        #current-time {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            font-variant-numeric: tabular-nums;
-        }
-
-        #current-date {
-            font-size: 0.65rem;
-            color: var(--text-tertiary);
+            color: var(--text-muted);
             margin-top: 0.1rem;
         }
 
-        /* Premium Greeting Card */
-        .greeting-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 92, 246, 0.2));
-            margin: 1.2rem 1.5rem;
-            padding: 1.5rem;
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            position: relative;
-            overflow: hidden;
+        .time-section {
+            text-align: right;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 40px;
+        }
+
+        #current-time {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        #current-date {
+            font-size: 0.55rem;
+            color: var(--text-secondary);
+        }
+
+        /* Greeting Section - Personalized */
+        .greeting-section {
+            padding: 1rem 1.5rem 0.5rem;
             flex-shrink: 0;
-            box-shadow: var(--shadow-glow), var(--shadow-card);
         }
 
-        .greeting-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .greeting-card:hover::before {
-            opacity: 1;
+        .greeting-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 1rem 1.2rem;
+            border: 1px solid var(--border-medium);
         }
 
         .greeting {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
-            color: var(--text-primary);
+            color: var(--primary-light);
+            font-family: 'Amiri', serif;
         }
 
-        .date-display {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            opacity: 0.9;
+        .greeting-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5da9e, #e8c97a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* Premium Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            padding: 0 1.5rem;
-            margin-bottom: 1.2rem;
-            flex-shrink: 0;
+        .quote {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+            font-style: italic;
         }
 
-        .stat-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.2rem;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--glass-border-hover);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat-card:hover::after {
-            opacity: 1;
-        }
-
-        .stat-header {
+        /* Stats Card */
+        .stats-card {
+            margin: 0.5rem 1.5rem 1rem;
+            background: rgba(18, 18, 28, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.8rem;
+            flex-shrink: 0;
         }
 
-        .stat-icon {
-            font-size: 1.5rem;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5da9e, #e8c97a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .stat-label {
             font-size: 0.65rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
+            color: var(--text-muted);
         }
 
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            font-variant-numeric: tabular-nums;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .divider {
+            width: 1px;
+            height: 30px;
+            background: var(--border-medium);
         }
 
-        /* Premium Quick Actions */
-        .actions-section {
-            padding: 0 1.5rem;
-            margin-bottom: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .section-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.8rem;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .action-btn {
-            flex: 1;
-            padding: 0.9rem;
-            border-radius: 16px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            color: var(--text-secondary);
+        /* Add Thought Button */
+        .add-button {
+            margin: 0 1.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            padding: 1rem;
+            border-radius: 60px;
+            color: #0a0a12;
             font-family: inherit;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-
-        .action-btn:hover::before {
-            left: 100%;
-        }
-
-        .action-btn:active {
-            transform: scale(0.96);
-        }
-
-        .action-btn.primary {
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
-            border: none;
-            color: #0a0a0f;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .action-btn.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        /* Premium Tabs */
-        .tabs-nav {
-            display: flex;
-            background: var(--glass-bg);
-            padding: 0 1.5rem;
-            border-bottom: 1px solid var(--glass-border);
-            backdrop-filter: blur(10px);
-            flex-shrink: 0;
             gap: 0.5rem;
-        }
-
-        .tab-btn {
-            padding: 1rem 1.2rem;
-            background: none;
-            border: none;
-            color: var(--text-tertiary);
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            border-radius: 12px 12px 0 0;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px var(--primary-glow);
+            flex-shrink: 0;
         }
 
-        .tab-btn.active {
-            color: var(--accent-gold);
-            background: rgba(212, 175, 55, 0.1);
+        .add-button:active {
+            transform: scale(0.97);
         }
 
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 20%;
-            right: 20%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
-            border-radius: 2px;
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+            margin-bottom: 0.8rem;
+            flex-shrink: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
         }
 
-        /* Content Area */
-        .content-area {
+        .filter-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            background: rgba(18, 18, 28, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #0a0a12;
+            border: none;
+        }
+
+        /* Thoughts List */
+        .thoughts-container {
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: 1.2rem 0;
+            padding: 0 1.5rem 1rem;
+            scrollbar-width: thin;
         }
 
-        .content-area::-webkit-scrollbar {
-            width: 6px;
+        .thoughts-container::-webkit-scrollbar {
+            width: 4px;
         }
 
-        .content-area::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        .content-area::-webkit-scrollbar-thumb {
-            background: var(--glass-border);
+        .thoughts-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
         }
 
-        .tab-content {
-            display: none;
-            padding: 0 1.5rem;
+        .thoughts-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
         }
 
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Premium List Items */
-        .list-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 1.1rem;
-            margin-bottom: 0.8rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .list-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--accent-rose), var(--accent-gold));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .list-item:hover {
-            border-color: var(--glass-border-hover);
-            transform: translateX(-4px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .list-item:hover::before {
-            opacity: 1;
-        }
-
-        .item-info h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .item-info p {
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-        }
-
-        .item-amount {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--accent-rose);
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Premium Thought Card */
+        /* Thought Card */
         .thought-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.2rem;
-            margin-bottom: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(18, 18, 28, 0.7);
             backdrop-filter: blur(10px);
+            border: 1px solid var(--border-light);
+            border-radius: 28px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
             position: relative;
-            overflow: hidden;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thought-card:active {
+            transform: scale(0.98);
+            background: rgba(212, 175, 55, 0.08);
         }
 
         .thought-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
-
-        .thought-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--glass-border-hover);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            top: 20px;
+            bottom: 20px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 4px;
         }
 
         .thought-header {
@@ -524,21 +370,27 @@
         }
 
         .thought-mood {
-            background: rgba(139, 92, 246, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            color: var(--accent-purple);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
             font-weight: 500;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .thought-date {
+            font-size: 0.6rem;
+            color: var(--text-muted);
         }
 
         .thought-title {
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-primary);
+            font-weight: 800;
+            font-size: 1.1rem;
+            font-family: 'Amiri', serif;
+            color: var(--primary-light);
             margin-bottom: 0.5rem;
-            line-height: 1.4;
         }
 
         .thought-content {
@@ -546,117 +398,48 @@
             line-height: 1.6;
             color: var(--text-secondary);
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .thought-date {
-            font-size: 0.7rem;
-            color: var(--text-tertiary);
+        .thought-footer {
             margin-top: 0.8rem;
             display: flex;
-            align-items: center;
-            gap: 0.4rem;
+            justify-content: flex-end;
+            border-top: 1px solid var(--border-light);
+            padding-top: 0.6rem;
         }
 
-        /* Premium Chart */
-        .chart-container {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 1.5rem;
-            margin-bottom: 1.2rem;
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow-card);
+        .delete-hint {
+            font-size: 0.55rem;
+            color: var(--text-muted);
+            opacity: 0.6;
         }
 
-        .chart-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-        }
-
-        .category-bar {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            gap: 1rem;
-        }
-
-        .bar-label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            min-width: 70px;
-            font-weight: 500;
-        }
-
-        .bar-track {
-            flex: 1;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(90deg, var(--accent-gold), var(--accent-purple));
-            position: relative;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .bar-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .bar-value {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            min-width: 60px;
-            text-align: left;
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Premium Empty State */
+        /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 3rem 2rem;
-            color: var(--text-tertiary);
+            padding: 3rem 1.5rem;
+            color: var(--text-muted);
         }
 
         .empty-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             opacity: 0.5;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+        }
+
+        .empty-state h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .empty-state p {
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.75rem;
         }
 
-        /* Premium Modals */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -664,111 +447,92 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(10, 10, 15, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
             z-index: 2000;
             padding: 1rem;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
         }
 
         .modal.active {
             display: flex;
-            opacity: 1;
         }
 
         .modal-card {
-            background: var(--bg-secondary);
-            border-radius: 28px;
-            padding: 1.8rem;
+            background: linear-gradient(145deg, #1a1a28, #12121c);
+            border-radius: 48px;
+            padding: 1.5rem;
             width: 100%;
             max-width: 340px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .modal.active .modal-card {
-            transform: scale(1) translateY(0);
+            border: 1px solid var(--border-medium);
+            box-shadow: var(--shadow-lg);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
 
         .modal-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-light);
+            font-family: 'Amiri', serif;
         }
 
         .close-btn {
             width: 36px;
             height: 36px;
-            border-radius: 12px;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            color: var(--text-tertiary);
-            font-size: 1.2rem;
+            border-radius: 50%;
+            border: 1px solid var(--border-medium);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .close-btn:hover {
-            background: rgba(244, 63, 94, 0.2);
-            color: var(--accent-rose);
-            border-color: rgba(244, 63, 94, 0.3);
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .form-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-tertiary);
-            margin-bottom: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 0.4rem;
             display: block;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .form-input {
             width: 100%;
-            padding: 0.9rem 1rem;
-            border-radius: 14px;
-            border: 1px solid var(--glass-border);
-            background: var(--bg-tertiary);
+            padding: 0.8rem 1rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-medium);
+            background: rgba(0, 0, 0, 0.3);
             color: var(--text-primary);
             font-family: inherit;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             outline: none;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
 
         .form-input:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px var(--primary-glow);
         }
 
         textarea.form-input {
             min-height: 100px;
             resize: none;
+            border-radius: 28px;
         }
 
         select.form-input {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e8c97a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: left 1rem center;
             padding-left: 2.5rem;
@@ -776,48 +540,40 @@
 
         .submit-btn {
             width: 100%;
-            padding: 1rem;
-            border-radius: 14px;
+            padding: 0.9rem;
+            border-radius: 40px;
             border: none;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
-            color: #0a0a0f;
-            font-weight: 700;
-            font-size: 0.95rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #0a0a12;
+            font-weight: 800;
+            font-size: 0.9rem;
             margin-top: 0.5rem;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            transition: all 0.2s;
         }
 
         .submit-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
-        /* Premium Toast */
+        /* Toast */
         .toast {
             position: fixed;
-            bottom: 100px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 500;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             z-index: 3000;
             pointer-events: none;
             white-space: nowrap;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .toast.show {
@@ -825,53 +581,27 @@
             opacity: 1;
         }
 
-        /* Top Category Card */
-        .top-category-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(139, 92, 246, 0.15));
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 1.2rem;
-            backdrop-filter: blur(10px);
-            margin-top: 0;
-        }
-
-        .top-category-card .stat-header {
-            margin-bottom: 0.5rem;
-        }
-
-        #top-category {
-            font-size: 1.2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Delete confirmation animation */
-        @keyframes slideOut {
-            to {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-        }
-
-        .deleting {
-            animation: slideOut 0.3s ease forwards;
-        }
+        /* Mood Colors */
+        .mood-😊, .mood-سعيد { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+        .mood-🤔, .mood-متفكر { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
+        .mood-😌, .mood-هادئ { background: rgba(52, 211, 153, 0.2); color: #34d399; }
+        .mood-💪, .mood-متحمس { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+        .mood-❤️, .mood-ممتن { background: rgba(236, 72, 153, 0.2); color: #ec489a; }
+        .mood-😢, .mood-حزين { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+        .mood-😞, .mood-مكتئب { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
+        .mood-😤, .mood-متوتر { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
     </style>
 </head>
 <body>
-    <div class="ambient-bg">
-        <div class="ambient-orb orb-1"></div>
-        <div class="ambient-orb orb-2"></div>
-    </div>
+    <div class="bg-stars" id="stars"></div>
+    <div class="glow-aura"></div>
+    <div class="glow-aura glow-aura-2"></div>
 
     <div class="app-container">
         <!-- Header -->
         <div class="app-header">
             <div class="logo-section">
-                <h1>لوحتي</h1>
+                <h1>✨ خواطر أفنان</h1>
                 <p>تصميم: سعود</p>
             </div>
             <div class="time-section">
@@ -880,141 +610,72 @@
             </div>
         </div>
 
-        <!-- Greeting Card -->
-        <div class="greeting-card">
-            <div class="greeting" id="greeting-text">مرحباً بك 👋</div>
-            <div class="date-display" id="hijri-date"></div>
-        </div>
-
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-icon">💰</span>
-                    <span class="stat-label">الإجمالي</span>
-                </div>
-                <div class="stat-value" id="total-expenses">٠</div>
-                <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.3rem;">ريال سعودي</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-header">
-                    <span class="stat-icon">📝</span>
-                    <span class="stat-label">الخواطر</span>
-                </div>
-                <div class="stat-value" id="total-thoughts">٠</div>
-                <div style="font-size: 0.75rem; color: var(--text-tertiary); margin-top: 0.3rem;">خاطرة مسجلة</div>
+        <!-- Greeting - Personalized with Name -->
+        <div class="greeting-section">
+            <div class="greeting-card">
+                <div class="greeting" id="greeting-text">مرحباً بك 👋</div>
+                <div class="quote">"اكتبي ما يجول في خاطرك، فالكلمات تبقى"</div>
             </div>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="actions-section">
-            <div class="section-title">إجراءات سريعة</div>
-            <div class="action-buttons">
-                <button class="action-btn primary" onclick="openModal('expense-modal')">
-                    <span>+</span> إضافة مصروف
-                </button>
-                <button class="action-btn" onclick="openModal('thought-modal')">
-                    <span>✍️</span> إضافة خاطرة
-                </button>
+        <!-- Stats -->
+        <div class="stats-card">
+            <div class="stat-item">
+                <div class="stat-value" id="total-thoughts">0</div>
+                <div class="stat-label">خاطرة مسجلة</div>
+            </div>
+            <div class="divider"></div>
+            <div class="stat-item">
+                <div class="stat-value" id="mood-today">😊</div>
+                <div class="stat-label">المزاج الأكثر</div>
             </div>
         </div>
 
-        <!-- Tabs -->
-        <div class="tabs-nav">
-            <button class="tab-btn active" data-tab="expenses-tab">المصروفات</button>
-            <button class="tab-btn" data-tab="thoughts-tab">الخواطر</button>
-            <button class="tab-btn" data-tab="stats-tab">تحليل البيانات</button>
+        <!-- Add Button -->
+        <button class="add-button" onclick="openModal()">
+            <span>✍️</span> خاطرة جديدة
+        </button>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="😊 سعيد">😊 سعيد</button>
+            <button class="filter-btn" data-filter="🤔 متفكر">🤔 متفكر</button>
+            <button class="filter-btn" data-filter="😌 هادئ">😌 هادئ</button>
+            <button class="filter-btn" data-filter="💪 متحمس">💪 متحمس</button>
+            <button class="filter-btn" data-filter="❤️ ممتن">❤️ ممتن</button>
+            <button class="filter-btn" data-filter="😢 حزين">😢 حزين</button>
+            <button class="filter-btn" data-filter="😞 مكتئب">😞 مكتئب</button>
+            <button class="filter-btn" data-filter="😤 متوتر">😤 متوتر</button>
         </div>
 
-        <!-- Content Area -->
-        <div class="content-area">
-            <div id="expenses-tab" class="tab-content active">
-                <div id="expenses-list">
-                    <div class="empty-state">
-                        <div class="empty-icon">📊</div>
-                        <p>لا توجد مصروفات مسجلة</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="thoughts-tab" class="tab-content">
-                <div id="thoughts-list">
-                    <div class="empty-state">
-                        <div class="empty-icon">💭</div>
-                        <p>لا توجد خواطر بعد</p>
-                    </div>
-                </div>
-            </div>
-
-            <div id="stats-tab" class="tab-content">
-                <div class="chart-container">
-                    <div class="chart-title">توزيع المصروفات حسب الفئة</div>
-                    <div id="category-chart">
-                        <div class="empty-state">
-                            <div class="empty-icon">📈</div>
-                            <p>لا توجد بيانات كافية</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="top-category-card">
-                    <div class="stat-header">
-                        <span class="stat-icon">🏆</span>
-                        <span class="stat-label">أعلى فئة إنفاق</span>
-                    </div>
-                    <div id="top-category">-</div>
+        <!-- Thoughts List -->
+        <div class="thoughts-container" id="thoughts-container">
+            <div id="thoughts-list">
+                <div class="empty-state">
+                    <div class="empty-icon">📖</div>
+                    <h3>لا توجد خواطر بعد</h3>
+                    <p>اضغطي على الزر أعلاه لكتابة أول خاطرة</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modals -->
-    <div class="modal" id="expense-modal">
-        <div class="modal-card">
-            <div class="modal-header">
-                <div class="modal-title">إضافة مصروف جديد</div>
-                <button class="close-btn" onclick="closeModal('expense-modal')">✕</button>
-            </div>
-            <form id="expense-form" onsubmit="handleExpense(event)">
-                <div class="form-group">
-                    <label class="form-label">الوصف</label>
-                    <input type="text" class="form-input" id="exp-desc" placeholder="مثال: قهوة، مواصلات..." required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">المبلغ (ريال)</label>
-                    <input type="number" class="form-input" id="exp-amount" placeholder="٠" required min="0" step="0.01">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">الفئة</label>
-                    <select class="form-input" id="exp-category">
-                        <option value="طعام">طعام</option>
-                        <option value="مواصلات">مواصلات</option>
-                        <option value="تسوق">تسوق</option>
-                        <option value="فواتير">فواتير</option>
-                        <option value="ترفيه">ترفيه</option>
-                        <option value="صحة">صحة</option>
-                        <option value="تعليم">تعليم</option>
-                        <option value="أخرى">أخرى</option>
-                    </select>
-                </div>
-                <button type="submit" class="submit-btn">حفظ المصروف</button>
-            </form>
-        </div>
-    </div>
-
+    <!-- Modal -->
     <div class="modal" id="thought-modal">
         <div class="modal-card">
             <div class="modal-header">
-                <div class="modal-title">إضافة خاطرة جديدة</div>
-                <button class="close-btn" onclick="closeModal('thought-modal')">✕</button>
+                <div class="modal-title">✍️ خاطرة جديدة</div>
+                <button class="close-btn" onclick="closeModal()">✕</button>
             </div>
             <form id="thought-form" onsubmit="handleThought(event)">
                 <div class="form-group">
                     <label class="form-label">العنوان</label>
-                    <input type="text" class="form-input" id="thought-title" placeholder="عنوان مختصر" required>
+                    <input type="text" class="form-input" id="thought-title" placeholder="عنوان مختصر..." required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">الخاطرة</label>
-                    <textarea class="form-input" id="thought-content" placeholder="اكتب ما يدور في خاطرك..." required></textarea>
+                    <label class="form-label">خاطرتك</label>
+                    <textarea class="form-input" id="thought-content" placeholder="اكتبي ما يدور في خاطرك..." required></textarea>
                 </div>
                 <div class="form-group">
                     <label class="form-label">المزاج</label>
@@ -1029,7 +690,7 @@
                         <option value="😤 متوتر">😤 متوتر</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">حفظ الخاطرة</button>
+                <button type="submit" class="submit-btn">🌟 حفظ الخاطرة</button>
             </form>
         </div>
     </div>
@@ -1037,35 +698,57 @@
     <div id="toast" class="toast"></div>
 
     <script>
-        let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
         let thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
+        let currentFilter = 'all';
+        const userName = "أفنان";
+
+        // Create stars background
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 4 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                container.appendChild(star);
+            }
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
+            createStars();
             updateDateTime();
             setInterval(updateDateTime, 60000);
-            setGreeting();
-            updateHijriDate();
+            updateGreeting();
             updateUI();
-            setupTabs();
+            setupFilters();
         });
 
         function updateDateTime() {
             const now = new Date();
             document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute: '2-digit'});
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long', year: 'numeric'});
+            document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long'});
+            updateGreeting(); // Update greeting when time changes
         }
 
-        function updateHijriDate() {
-            const now = new Date();
-            document.getElementById('hijri-date').textContent = now.toLocaleDateString('ar-SA-u-ca-islamic', {day: 'numeric', month: 'long', year: 'numeric'});
-        }
-
-        function setGreeting() {
+        function updateGreeting() {
             const hour = new Date().getHours();
-            const greeting = document.getElementById('greeting-text');
-            if (hour < 12) greeting.textContent = 'صباح النور ☀️';
-            else if (hour < 17) greeting.textContent = 'مساء الخير 🌤️';
-            else greeting.textContent = 'مساء النور 🌙';
+            const greetingElement = document.getElementById('greeting-text');
+            let timeGreeting = '';
+            
+            if (hour < 12) {
+                timeGreeting = 'صباح الخير';
+            } else if (hour < 17) {
+                timeGreeting = 'مساء الخير';
+            } else {
+                timeGreeting = 'مساء النور';
+            }
+            
+            greetingElement.innerHTML = `${timeGreeting} <span class="greeting-name">${userName}</span> 👋`;
         }
 
         function formatNum(num) {
@@ -1076,46 +759,27 @@
             const toast = document.getElementById('toast');
             toast.textContent = msg;
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
+            setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.add('active');
+        function openModal() {
+            document.getElementById('thought-modal').classList.add('active');
         }
 
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.remove('active');
+        function closeModal() {
+            document.getElementById('thought-modal').classList.remove('active');
         }
 
-        function setupTabs() {
-            const tabs = document.querySelectorAll('.tab-btn');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.dataset.tab;
-                    document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-                    document.getElementById(tabId).classList.add('active');
+        function setupFilters() {
+            const filters = document.querySelectorAll('.filter-btn');
+            filters.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filters.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderThoughts();
                 });
             });
-        }
-
-        function handleExpense(e) {
-            e.preventDefault();
-            const expense = {
-                id: Date.now(),
-                desc: document.getElementById('exp-desc').value,
-                amount: parseFloat(document.getElementById('exp-amount').value),
-                category: document.getElementById('exp-category').value,
-                date: new Date().toLocaleDateString('ar-SA'),
-                timestamp: new Date().toISOString()
-            };
-            expenses.unshift(expense);
-            localStorage.setItem('expenses', JSON.stringify(expenses));
-            closeModal('expense-modal');
-            showToast('✨ تم حفظ المصروف بنجاح');
-            e.target.reset();
-            updateUI();
         }
 
         function handleThought(e) {
@@ -1125,41 +789,89 @@
                 title: document.getElementById('thought-title').value,
                 content: document.getElementById('thought-content').value,
                 mood: document.getElementById('thought-mood').value,
-                date: new Date().toLocaleDateString('ar-SA'),
+                date: new Date().toLocaleDateString('ar-SA', {day: 'numeric', month: 'long', year: 'numeric'}),
                 timestamp: new Date().toISOString()
             };
             thoughts.unshift(thought);
             localStorage.setItem('thoughts', JSON.stringify(thoughts));
-            closeModal('thought-modal');
-            showToast('✨ تم حفظ الخاطرة بنجاح');
+            closeModal();
+            showToast('✨ تم حفظ الخاطرة');
             e.target.reset();
             updateUI();
         }
 
-        function deleteExpense(id) {
-            if (confirm('هل تريد حذف هذا المصروف؟')) {
-                const el = document.querySelector(`[data-expense-id="${id}"]`);
-                if (el) el.classList.add('deleting');
-                setTimeout(() => {
-                    expenses = expenses.filter(e => e.id !== id);
-                    localStorage.setItem('expenses', JSON.stringify(expenses));
-                    updateUI();
-                    showToast('🗑️ تم حذف المصروف');
-                }, 300);
+        function deleteThought(id) {
+            if (confirm('🗑️ هل تريدين حذف هذه الخاطرة؟')) {
+                thoughts = thoughts.filter(t => t.id !== id);
+                localStorage.setItem('thoughts', JSON.stringify(thoughts));
+                updateUI();
+                showToast('تم حذف الخاطرة');
             }
         }
 
-        function deleteThought(id) {
-            if (confirm('هل تريد حذف هذه الخاطرة؟')) {
-                const el = document.querySelector(`[data-thought-id="${id}"]`);
-                if (el) el.classList.add('deleting');
-                setTimeout(() => {
-                    thoughts = thoughts.filter(t => t.id !== id);
-                    localStorage.setItem('thoughts', JSON.stringify(thoughts));
-                    updateUI();
-                    showToast('🗑️ تم حذف الخاطرة');
-                }, 300);
+        function getMoodClass(mood) {
+            const moodMap = {
+                '😊 سعيد': 'mood-😊',
+                '🤔 متفكر': 'mood-🤔',
+                '😌 هادئ': 'mood-😌',
+                '💪 متحمس': 'mood-💪',
+                '❤️ ممتن': 'mood-❤️',
+                '😢 حزين': 'mood-😢',
+                '😞 مكتئب': 'mood-😞',
+                '😤 متوتر': 'mood-😤'
+            };
+            return moodMap[mood] || '';
+        }
+
+        function getMostCommonMood() {
+            if (thoughts.length === 0) return '😊';
+            const moodCount = {};
+            thoughts.forEach(t => {
+                const mood = t.mood;
+                moodCount[mood] = (moodCount[mood] || 0) + 1;
+            });
+            const mostCommon = Object.entries(moodCount).sort((a, b) => b[1] - a[1])[0];
+            return mostCommon ? mostCommon[0].split(' ')[0] : '😊';
+        }
+
+        function renderThoughts() {
+            const container = document.getElementById('thoughts-list');
+            let filteredThoughts = thoughts;
+            
+            if (currentFilter !== 'all') {
+                filteredThoughts = thoughts.filter(t => t.mood === currentFilter);
             }
+            
+            if (filteredThoughts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📖</div>
+                        <h3>لا توجد خواطر</h3>
+                        <p>${currentFilter !== 'all' ? 'لا توجد خواطر بهذا المزاج' : 'اكتبي أول خاطرة الآن'}</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filteredThoughts.map(t => `
+                <div class="thought-card" onclick="deleteThought(${t.id})">
+                    <div class="thought-header">
+                        <span class="thought-mood ${getMoodClass(t.mood)}">${t.mood}</span>
+                        <span class="thought-date">${t.date}</span>
+                    </div>
+                    <div class="thought-title">${escapeHtml(t.title)}</div>
+                    <div class="thought-content">${escapeHtml(t.content)}</div>
+                    <div class="thought-footer">
+                        <span class="delete-hint">اضغطي للحذف</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateUI() {
+            document.getElementById('total-thoughts').textContent = formatNum(thoughts.length);
+            document.getElementById('mood-today').textContent = getMostCommonMood();
+            renderThoughts();
         }
 
         function escapeHtml(str) {
@@ -1172,76 +884,9 @@
             });
         }
 
-        function updateUI() {
-            const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
-            document.getElementById('total-expenses').textContent = formatNum(totalExp);
-            document.getElementById('total-thoughts').textContent = formatNum(thoughts.length);
-
-            const expensesDiv = document.getElementById('expenses-list');
-            if (expenses.length === 0) {
-                expensesDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><p>لا توجد مصروفات مسجلة</p></div>';
-            } else {
-                expensesDiv.innerHTML = expenses.map(exp => `
-                    <div class="list-item" data-expense-id="${exp.id}" onclick="deleteExpense(${exp.id})">
-                        <div class="item-info">
-                            <h4>${exp.category} · ${escapeHtml(exp.desc)}</h4>
-                            <p>${exp.date}</p>
-                        </div>
-                        <div class="item-amount">${formatNum(exp.amount)} ر.س</div>
-                    </div>
-                `).join('');
-            }
-
-            const thoughtsDiv = document.getElementById('thoughts-list');
-            if (thoughts.length === 0) {
-                thoughtsDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">💭</div><p>لا توجد خواطر بعد</p></div>';
-            } else {
-                thoughtsDiv.innerHTML = thoughts.map(t => `
-                    <div class="thought-card" data-thought-id="${t.id}" onclick="deleteThought(${t.id})">
-                        <div class="thought-header">
-                            <span class="thought-mood">${t.mood}</span>
-                        </div>
-                        <div class="thought-title">${escapeHtml(t.title)}</div>
-                        <div class="thought-content">${escapeHtml(t.content)}</div>
-                        <div class="thought-date">📅 ${t.date}</div>
-                    </div>
-                `).join('');
-            }
-
-            updateStats();
-        }
-
-        function updateStats() {
-            if (expenses.length === 0) {
-                document.getElementById('category-chart').innerHTML = '<div class="empty-state"><div class="empty-icon">📈</div><p>لا توجد بيانات كافية</p></div>';
-                document.getElementById('top-category').textContent = '-';
-                return;
-            }
-
-            const cats = {};
-            expenses.forEach(e => cats[e.category] = (cats[e.category] || 0) + e.amount);
-            const maxVal = Math.max(...Object.values(cats));
-            
-            const chart = document.getElementById('category-chart');
-            chart.innerHTML = Object.entries(cats).sort((a, b) => b[1] - a[1]).map(([cat, val]) => `
-                <div class="category-bar">
-                    <div class="bar-label">${cat}</div>
-                    <div class="bar-track">
-                        <div class="bar-fill" style="width: ${(val/maxVal)*100}%"></div>
-                    </div>
-                    <div class="bar-value">${formatNum(val)} ر.س</div>
-                </div>
-            `).join('');
-            
-            const topCat = Object.entries(cats).sort((a, b) => b[1] - a[1])[0];
-            document.getElementById('top-category').textContent = topCat ? topCat[0] : '-';
-        }
-
         window.openModal = openModal;
         window.closeModal = closeModal;
-        window.handleExpense = handleExpense;
         window.handleThought = handleThought;
-        window.deleteExpense = deleteExpense;
         window.deleteThought = deleteThought;
     </script>
 </body>
