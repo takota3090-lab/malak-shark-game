@@ -1,724 +1,681 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>Baby Shark vs Malak Alsahli</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
+    <title>لوحة التحكم الذهبية | تصميم سعود</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Changa:wght@400;500;600;700;800&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            touch-action: none;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            position: fixed;
-            font-family: 'Nunito', sans-serif;
-            background: #f5f0e8;
-        }
-        
-        #gameCanvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #faf6f0 0%, #f0e8dc 100%);
-        }
-        
-        #ui {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-family: 'Fredoka One', cursive;
-            color: #5a4a3a;
-            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        #ui h1 {
-            font-size: 18px;
-            color: #ff6b9d;
-            margin-bottom: 5px;
-            letter-spacing: 1px;
-        }
-        
-        .stat-box {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px 15px;
-            border-radius: 15px;
-            margin: 3px 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            display: inline-block;
-            font-size: 14px;
-        }
-        
-        .stat-box span {
-            color: #ff6b9d;
-            font-size: 18px;
-        }
-        
-        #lives {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 8px 15px;
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            pointer-events: none;
-        }
-        
-        #startScreen, #gameOver {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            z-index: 20;
-            padding: 20px;
-        }
-        
-        #gameOver {
-            display: none;
-        }
-        
-        .malak-emoji {
-            font-size: 80px;
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        h2 {
-            font-family: 'Fredoka One', cursive;
-            font-size: 32px;
-            color: #ff6b9d;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-        
-        p {
-            color: #7a6a5a;
-            font-size: 16px;
-            margin: 8px 0;
-            line-height: 1.5;
-            max-width: 300px;
-        }
-        
-        .instructions {
-            background: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .tap-icon {
-            font-size: 40px;
-            margin: 10px 0;
-            animation: pulse 1.5s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        
-        button {
-            margin-top: 20px;
-            padding: 18px 50px;
-            font-family: 'Fredoka One', cursive;
-            font-size: 24px;
-            background: linear-gradient(135deg, #ff6b9d 0%, #ff8e53 100%);
-            border: none;
-            color: white;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
-            transition: all 0.2s;
             -webkit-tap-highlight-color: transparent;
         }
-        
-        button:active {
+
+        body {
+            background: linear-gradient(145deg, #0a1a1a 0%, #0a2a2a 100%);
+            min-height: 100vh;
+            font-family: 'Almarai', 'Cairo', 'Changa', system-ui, sans-serif;
+            padding: 16px;
+        }
+
+        /* الحاوية الرئيسية */
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* الهيدر */
+        .header {
+            text-align: center;
+            margin-bottom: 28px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5da9e, #e8c97a, #d4ae5a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 6px;
+            font-family: 'Changa', sans-serif;
+        }
+
+        .subtitle {
+            color: #e8c97a;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(232, 201, 122, 0.4);
+            display: inline-block;
+            padding-top: 6px;
+        }
+
+        /* شبكة البطاقات */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* البطاقات */
+        .card {
+            background: linear-gradient(145deg, rgba(30, 55, 55, 0.75), rgba(20, 45, 45, 0.85));
+            backdrop-filter: blur(12px);
+            border-radius: 40px;
+            border: 1px solid rgba(232, 201, 122, 0.4);
+            padding: 22px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #e8c97a;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(232, 201, 122, 0.4);
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: #f5da9e;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f5da9e;
+            font-family: 'Changa', sans-serif;
+        }
+
+        /* منطقة الأفكار */
+        .thoughts-area {
+            width: 100%;
+            min-height: 200px;
+            background: rgba(10, 35, 35, 0.6);
+            border: 1px solid rgba(232, 201, 122, 0.3);
+            border-radius: 28px;
+            padding: 16px;
+            color: #e8f0e8;
+            font-family: 'Almarai', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .thoughts-area:focus {
+            border-color: #f5da9e;
+            box-shadow: 0 0 0 2px rgba(245, 218, 158, 0.2);
+        }
+
+        .thoughts-area::placeholder {
+            color: #7fa88a;
+        }
+
+        /* قسم المصروفات */
+        .spending-form {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .spending-input {
+            flex: 2;
+            background: rgba(10, 35, 35, 0.6);
+            border: 1px solid rgba(232, 201, 122, 0.4);
+            border-radius: 60px;
+            padding: 12px 18px;
+            color: #e8f0e8;
+            font-family: 'Almarai', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .spending-input:focus {
+            border-color: #f5da9e;
+        }
+
+        .spending-amount {
+            flex: 1;
+            background: rgba(10, 35, 35, 0.6);
+            border: 1px solid rgba(232, 201, 122, 0.4);
+            border-radius: 60px;
+            padding: 12px 18px;
+            color: #e8f0e8;
+            font-family: 'Almarai', monospace;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .add-btn {
+            background: linear-gradient(125deg, #e8c97a, #d4ae5a);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-family: 'Changa', sans-serif;
+            color: #1a3a3a;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* قائمة المصروفات */
+        .spending-list {
+            max-height: 280px;
+            overflow-y: auto;
+            margin-top: 16px;
+        }
+
+        .spending-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 35, 35, 0.5);
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 60px;
+            transition: all 0.2s;
+            animation: slideIn 0.3s ease;
+        }
+
+        .spending-item:hover {
+            background: rgba(232, 201, 122, 0.15);
+        }
+
+        .spending-info {
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .spending-name {
+            font-weight: 600;
+            color: #e8f0e8;
+        }
+
+        .spending-price {
+            color: #f5da9e;
+            font-weight: 700;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .delete-btn {
+            background: rgba(200, 80, 70, 0.3);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 40px;
+            color: #ffaa99;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+
+        .delete-btn:active {
             transform: scale(0.95);
-            box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
         }
-        
-        .final-score {
-            font-size: 48px;
-            color: #ff6b9d;
-            font-weight: bold;
-            margin: 10px 0;
+
+        /* إحصائيات المصروفات */
+        .stats {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(232, 201, 122, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-        
-        .wave-display {
-            color: #ff8e53;
-            font-weight: bold;
-            font-size: 24px;
+
+        .total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f5da9e;
         }
-        
-        /* Prevent text selection */
-        .no-select {
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+
+        .total span {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffd966;
+        }
+
+        .reset-spending {
+            background: rgba(232, 201, 122, 0.2);
+            border: 1px solid #e8c97a;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: #e8c97a;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+
+        .reset-spending:active {
+            transform: scale(0.95);
+        }
+
+        /* قسم الملاحظات السريعة */
+        .quick-notes {
+            margin-top: 16px;
+        }
+
+        .note-input {
+            width: 100%;
+            background: rgba(10, 35, 35, 0.6);
+            border: 1px solid rgba(232, 201, 122, 0.4);
+            border-radius: 60px;
+            padding: 12px 18px;
+            color: #e8f0e8;
+            font-family: 'Almarai', sans-serif;
+            margin-bottom: 12px;
+            outline: none;
+        }
+
+        .note-input:focus {
+            border-color: #f5da9e;
+        }
+
+        .notes-list {
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .note-item {
+            background: rgba(10, 35, 35, 0.5);
+            padding: 10px 16px;
+            margin-bottom: 6px;
+            border-radius: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        .note-text {
+            color: #e0f0e0;
+            font-size: 0.85rem;
+            word-break: break-word;
+            flex: 1;
+        }
+
+        .delete-note {
+            background: none;
+            border: none;
+            color: #ffaa99;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+        }
+
+        /* تأثيرات الحركة */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 850px) {
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .card {
+                padding: 18px;
+            }
+            .title {
+                font-size: 1.6rem;
+            }
+            .spending-form {
+                flex-direction: column;
+            }
+            .add-btn {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            .card-header h2 {
+                font-size: 1.1rem;
+            }
+            .total {
+                font-size: 1rem;
+            }
+        }
+
+        /* شريط التمرير المخصص */
+        .spending-list::-webkit-scrollbar,
+        .notes-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .spending-list::-webkit-scrollbar-track,
+        .notes-list::-webkit-scrollbar-track {
+            background: #2e5a5a;
+            border-radius: 10px;
+        }
+        .spending-list::-webkit-scrollbar-thumb,
+        .notes-list::-webkit-scrollbar-thumb {
+            background: #e8c97a;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <canvas id="gameCanvas"></canvas>
-    
-    <div id="ui">
-        <h1>👧 Malak vs 🦈</h1>
-        <div class="stat-box">SCORE: <span id="score">0</span></div>
-        <div class="stat-box">WAVE: <span id="wave">1</span></div>
-    </div>
-    
-    <div id="lives">
-        <span>🍿</span><span>🍿</span><span>🍿</span>
-    </div>
-    
-    <div id="startScreen">
-        <div class="malak-emoji">👧🆚🦈</div>
-        <h2>Baby Shark vs<br>Malak Alsahli</h2>
-        <div class="instructions">
-            <div class="tap-icon">👆</div>
-            <p><strong>Tap the sharks</strong> to stop them!</p>
-            <p>Don't let them steal Malak's snacks! 🍿</p>
-        </div>
-        <button onclick="startGame()">PLAY NOW</button>
-    </div>
-    
-    <div id="gameOver">
-        <div class="malak-emoji">😢</div>
-        <h2>The Sharks Won!</h2>
-        <p>Malak's Score:</p>
-        <div class="final-score" id="finalScore">0</div>
-        <p>Best Wave: <span class="wave-display" id="finalWave">1</span></p>
-        <button onclick="restartGame()">PLAY AGAIN</button>
+<div class="dashboard">
+    <div class="header">
+        <div class="title">📊 لوحة التحكم الذهبية 📊</div>
+        <div class="subtitle">من المصمم <span style="color:#f5da9e;">سعود</span> | سجل أفكارك ومصروفاتك بأناقة</div>
     </div>
 
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        
-        // Mobile-optimized canvas sizing
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    <div class="grid">
+        <!-- بطاقة الأفكار الطويلة -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2>📝 أفكاري وملاحظاتي</h2>
+            </div>
+            <textarea id="thoughtsArea" class="thoughts-area" placeholder="اكتب أفكارك، ملاحظاتك، أهدافك، أو أي شيء تريد تسجيله هنا..."></textarea>
+            <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+                <span style="font-size: 0.7rem; color: #8aae9a;">💾 يتم الحفظ تلقائيًا</span>
+            </div>
+        </div>
+
+        <!-- بطاقة المصروفات -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-coins"></i>
+                <h2>💰 سجل المصروفات</h2>
+            </div>
+            <div class="spending-form">
+                <input type="text" id="expenseName" class="spending-input" placeholder="اسم المصروف (مثل: قهوة، مواصلات...)" autocomplete="off">
+                <input type="number" id="expenseAmount" class="spending-amount" placeholder="المبلغ (ريال)" autocomplete="off">
+                <button id="addExpenseBtn" class="add-btn"><i class="fas fa-plus"></i> إضافة</button>
+            </div>
+            <div id="expensesList" class="spending-list">
+                <!-- سيتم عرض المصروفات هنا -->
+                <div style="text-align: center; color: #8aae9a; padding: 20px;">لا توجد مصروفات مسجلة</div>
+            </div>
+            <div class="stats">
+                <div class="total">💰 الإجمالي: <span id="totalAmount">0</span> ريال</div>
+                <button id="resetExpensesBtn" class="reset-spending"><i class="fas fa-trash-alt"></i> حذف الكل</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- بطاقة الملاحظات السريعة -->
+    <div class="card" style="margin-top: 0;">
+        <div class="card-header">
+            <i class="fas fa-sticky-note"></i>
+            <h2>📌 ملاحظات سريعة</h2>
+        </div>
+        <div class="quick-notes">
+            <input type="text" id="quickNoteInput" class="note-input" placeholder="أضف ملاحظة سريعة..." autocomplete="off">
+            <button id="addNoteBtn" class="add-btn" style="width: auto; padding: 10px 24px; margin-bottom: 16px;"><i class="fas fa-plus"></i> إضافة ملاحظة</button>
+            <div id="notesList" class="notes-list">
+                <div style="text-align: center; color: #8aae9a; padding: 20px;">لا توجد ملاحظات</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ==================== إدارة التخزين المحلي ====================
+    // تحميل البيانات المحفوظة
+    let thoughts = localStorage.getItem("userThoughts") || "";
+    let expenses = JSON.parse(localStorage.getItem("userExpenses")) || [];
+    let quickNotes = JSON.parse(localStorage.getItem("quickNotes")) || [];
+
+    // عناصر DOM
+    const thoughtsArea = document.getElementById("thoughtsArea");
+    const expenseNameInput = document.getElementById("expenseName");
+    const expenseAmountInput = document.getElementById("expenseAmount");
+    const addExpenseBtn = document.getElementById("addExpenseBtn");
+    const expensesListDiv = document.getElementById("expensesList");
+    const totalAmountSpan = document.getElementById("totalAmount");
+    const resetExpensesBtn = document.getElementById("resetExpensesBtn");
+    const quickNoteInput = document.getElementById("quickNoteInput");
+    const addNoteBtn = document.getElementById("addNoteBtn");
+    const notesListDiv = document.getElementById("notesList");
+
+    // ==================== دالة تحديث الأفكار ====================
+    function updateThoughts() {
+        thoughtsArea.value = thoughts;
+    }
+
+    function saveThoughts() {
+        thoughts = thoughtsArea.value;
+        localStorage.setItem("userThoughts", thoughts);
+    }
+
+    // ==================== دالة تحديث المصروفات ====================
+    function renderExpenses() {
+        if (expenses.length === 0) {
+            expensesListDiv.innerHTML = '<div style="text-align: center; color: #8aae9a; padding: 20px;">✨ لا توجد مصروفات مسجلة ✨</div>';
+            totalAmountSpan.textContent = "0";
+            return;
         }
-        resizeCanvas();
-        
-        let gameRunning = false;
-        let score = 0;
-        let wave = 1;
-        let lives = 3;
-        let lastTime = 0;
-        
-        // Responsive room dimensions
-        function getRoomDimensions() {
-            return {
-                floorY: canvas.height * 0.65,
-                couchY: canvas.height * 0.5,
-                snackBowlX: canvas.width / 2,
-                snackBowlY: canvas.height * 0.78,
-                malakX: canvas.width * 0.2,
-                malakY: canvas.height * 0.75
-            };
+
+        let total = 0;
+        let html = "";
+        expenses.forEach((expense, index) => {
+            total += expense.amount;
+            html += `
+                <div class="spending-item" data-index="${index}">
+                    <div class="spending-info">
+                        <span class="spending-name">${escapeHtml(expense.name)}</span>
+                        <span class="spending-price">${formatNumber(expense.amount)} ريال</span>
+                    </div>
+                    <button class="delete-btn" onclick="deleteExpense(${index})">
+                        <i class="fas fa-trash-alt"></i> حذف
+                    </button>
+                </div>
+            `;
+        });
+        expensesListDiv.innerHTML = html;
+        totalAmountSpan.textContent = formatNumber(total);
+    }
+
+    function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function escapeHtml(str) {
+        if (!str) return "";
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function saveExpenses() {
+        localStorage.setItem("userExpenses", JSON.stringify(expenses));
+        renderExpenses();
+    }
+
+    function addExpense() {
+        const name = expenseNameInput.value.trim();
+        const amount = parseFloat(expenseAmountInput.value);
+
+        if (!name) {
+            alert("⚠️ الرجاء إدخال اسم المصروف");
+            return;
         }
-        
-        let room = getRoomDimensions();
-        
-        // Game entities
-        let sharks = [];
-        let particles = [];
-        let floatingTexts = [];
-        let bubbles = [];
-        
-        // Shark family colors
-        const sharkColors = ['#ff6b9d', '#4ecdc4', '#ffe66d', '#ff8e53'];
-        const sharkNames = ['Baby', 'Mommy', 'Daddy', 'Grandma'];
-        
-        class Shark {
-            constructor() {
-                // Responsive sizing based on screen width
-                const baseSize = Math.min(canvas.width, canvas.height) * 0.08;
-                this.size = baseSize + Math.random() * (baseSize * 0.5);
-                this.y = Math.random() * (room.floorY - this.size * 2) + this.size;
-                this.x = -this.size * 2;
-                // Speed scales with screen size and wave
-                this.speed = (canvas.width * 0.003 + Math.random() * canvas.width * 0.002) * (1 + wave * 0.15);
-                this.color = sharkColors[Math.floor(Math.random() * sharkColors.length)];
-                this.name = sharkNames[Math.floor(Math.random() * sharkNames.length)];
-                this.tailWag = 0;
-                this.tailSpeed = 0.15 + Math.random() * 0.1;
-                this.bounce = 0;
-                this.defeated = false;
-                this.rotation = 0;
-                this.hitRadius = this.size * 0.6; // Larger hit area for mobile tapping
-            }
-            
-            update(deltaTime) {
-                if (!this.defeated) {
-                    this.x += this.speed * (deltaTime / 16);
-                    this.tailWag += this.tailSpeed;
-                    this.bounce = Math.sin(this.tailWag * 2) * (this.size * 0.1);
-                    
-                    // Check if reached snack bowl
-                    if (this.x > room.snackBowlX - this.size && this.x < room.snackBowlX + this.size) {
-                        if (Math.abs(this.y - room.snackBowlY) < this.size * 1.5) {
-                            return 'steal';
-                        }
-                    }
-                } else {
-                    // Fly away when defeated
-                    this.y -= canvas.height * 0.015;
-                    this.rotation += 0.15;
-                    this.x += canvas.width * 0.005;
-                }
-                
-                return this.x > canvas.width + this.size * 2 || this.y < -this.size * 2 ? 'remove' : 'active';
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y + this.bounce);
-                ctx.rotate(this.rotation);
-                
-                const size = this.size;
-                
-                // Tail animation
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                const tailOffset = Math.sin(this.tailWag) * (size * 0.3);
-                ctx.moveTo(-size * 0.5, 0);
-                ctx.lineTo(-size, -size * 0.3 + tailOffset);
-                ctx.lineTo(-size, size * 0.3 + tailOffset);
-                ctx.closePath();
-                ctx.fill();
-                
-                // Body
-                ctx.beginPath();
-                ctx.ellipse(0, 0, size * 0.5, size * 0.35, 0, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Belly
-                ctx.fillStyle = '#fff';
-                ctx.beginPath();
-                ctx.ellipse(0, size * 0.1, size * 0.35, size * 0.25, 0, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Eye
-                ctx.fillStyle = '#fff';
-                ctx.beginPath();
-                ctx.arc(size * 0.25, -size * 0.1, size * 0.15, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#000';
-                ctx.beginPath();
-                ctx.arc(size * 0.3, -size * 0.1, size * 0.08, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Smile
-                ctx.strokeStyle = '#000';
-                ctx.lineWidth = size * 0.05;
-                ctx.beginPath();
-                ctx.arc(size * 0.25, 0, size * 0.12, 0.2, Math.PI - 0.2);
-                ctx.stroke();
-                
-                // Fin
-                ctx.fillStyle = this.color;
-                ctx.beginPath();
-                ctx.moveTo(0, -size * 0.35);
-                ctx.lineTo(-size * 0.25, -size * 0.6);
-                ctx.lineTo(size * 0.25, -size * 0.35);
-                ctx.closePath();
-                ctx.fill();
-                
-                ctx.restore();
-            }
-            
-            checkTap(x, y) {
-                const dist = Math.sqrt((x - this.x) ** 2 + (y - (this.y + this.bounce)) ** 2);
-                return dist < this.hitRadius && !this.defeated;
-            }
+        if (isNaN(amount) || amount <= 0) {
+            alert("⚠️ الرجاء إدخال مبلغ صحيح أكبر من 0");
+            return;
         }
+
+        expenses.push({
+            name: name,
+            amount: amount,
+            date: new Date().toISOString()
+        });
+        saveExpenses();
+
+        // تفريغ الحقول
+        expenseNameInput.value = "";
+        expenseAmountInput.value = "";
         
-        class Particle {
-            constructor(x, y, color) {
-                this.x = x;
-                this.y = y;
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 5 + 2;
-                this.vx = Math.cos(angle) * speed;
-                this.vy = Math.sin(angle) * speed;
-                this.life = 1;
-                this.color = color;
-                this.size = Math.random() * 15 + 10;
-                this.emojis = ['✨', '⭐', '💫', '🌟'];
-                this.emoji = this.emojis[Math.floor(Math.random() * this.emojis.length)];
-            }
-            
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.vy += 0.2;
-                this.life -= 0.025;
-                return this.life <= 0;
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.life;
-                ctx.font = `${this.size}px Arial`;
-                ctx.fillText(this.emoji, this.x, this.y);
-                ctx.restore();
-            }
+        // تأثير بسيط
+        expenseNameInput.focus();
+    }
+
+    window.deleteExpense = function(index) {
+        expenses.splice(index, 1);
+        saveExpenses();
+    };
+
+    function resetAllExpenses() {
+        if (expenses.length > 0 && confirm("🗑️ هل أنت متأكد من حذف جميع المصروفات؟")) {
+            expenses = [];
+            saveExpenses();
         }
-        
-        class FloatingText {
-            constructor(x, y, text, color = '#ff6b9d') {
-                this.x = x;
-                this.y = y;
-                this.text = text;
-                this.color = color;
-                this.life = 1;
-                this.vy = -3;
-                this.scale = 1;
-            }
-            
-            update() {
-                this.y += this.vy;
-                this.life -= 0.02;
-                this.scale = 1 + (1 - this.life) * 0.5;
-                return this.life <= 0;
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.life;
-                ctx.translate(this.x, this.y);
-                ctx.scale(this.scale, this.scale);
-                ctx.font = `bold ${Math.min(canvas.width * 0.06, 30)}px Fredoka One`;
-                ctx.fillStyle = this.color;
-                ctx.strokeStyle = '#fff';
-                ctx.lineWidth = 3;
-                ctx.textAlign = 'center';
-                ctx.strokeText(this.text, 0, 0);
-                ctx.fillText(this.text, 0, 0);
-                ctx.restore();
-            }
+    }
+
+    // ==================== دالة الملاحظات السريعة ====================
+    function renderNotes() {
+        if (quickNotes.length === 0) {
+            notesListDiv.innerHTML = '<div style="text-align: center; color: #8aae9a; padding: 20px;">📝 أضف ملاحظاتك السريعة هنا</div>';
+            return;
         }
-        
-        class Bubble {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + 20;
-                this.size = Math.random() * 15 + 5;
-                this.speed = Math.random() * 1 + 0.5;
-                this.wobble = Math.random() * Math.PI * 2;
-            }
-            
-            update() {
-                this.y -= this.speed;
-                this.wobble += 0.05;
-                this.x += Math.sin(this.wobble) * 0.5;
-                return this.y < -20;
-            }
-            
-            draw() {
-                ctx.save();
-                ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-                ctx.fill();
-                ctx.restore();
-            }
+
+        let html = "";
+        quickNotes.forEach((note, index) => {
+            html += `
+                <div class="note-item" data-note-index="${index}">
+                    <span class="note-text">📌 ${escapeHtml(note)}</span>
+                    <button class="delete-note" onclick="deleteNote(${index})">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+            `;
+        });
+        notesListDiv.innerHTML = html;
+    }
+
+    function saveNotes() {
+        localStorage.setItem("quickNotes", JSON.stringify(quickNotes));
+        renderNotes();
+    }
+
+    function addQuickNote() {
+        const noteText = quickNoteInput.value.trim();
+        if (!noteText) {
+            alert("⚠️ الرجاء إدخال نص الملاحظة");
+            return;
         }
+        quickNotes.unshift(noteText); // إضافة في البداية
+        saveNotes();
+        quickNoteInput.value = "";
+        quickNoteInput.focus();
+    }
+
+    window.deleteNote = function(index) {
+        quickNotes.splice(index, 1);
+        saveNotes();
+    };
+
+    // ==================== تهيئة الصفحة وتحميل البيانات ====================
+    function init() {
+        // تحميل الأفكار
+        updateThoughts();
         
-        function drawRoom() {
-            // Wall
-            ctx.fillStyle = '#faf8f5';
-            ctx.fillRect(0, 0, canvas.width, room.floorY);
-            
-            // Floor
-            ctx.fillStyle = '#e8e0d5';
-            ctx.fillRect(0, room.floorY, canvas.width, canvas.height - room.floorY);
-            
-            // Carpet pattern
-            ctx.strokeStyle = '#d0c8c0';
-            ctx.lineWidth = 2;
-            const patternSize = Math.min(40, canvas.width * 0.1);
-            for (let i = 0; i < canvas.width; i += patternSize) {
-                ctx.beginPath();
-                ctx.moveTo(i, room.floorY);
-                ctx.lineTo(i - patternSize * 0.5, canvas.height);
-                ctx.stroke();
-            }
-            
-            // Couch
-            ctx.fillStyle = '#e5ddd3';
-            ctx.fillRect(0, room.couchY, canvas.width * 0.7, canvas.height - room.couchY);
-            
-            // Couch cushions
-            ctx.fillStyle = '#d4ccc0';
-            const cushionWidth = Math.min(120, canvas.width * 0.25);
-            for (let i = 0; i < 3; i++) {
-                ctx.fillRect(20 + i * (cushionWidth + 10), room.couchY - 20, cushionWidth, 60);
-            }
-            
-            // Malak character
-            ctx.font = `${Math.min(100, canvas.width * 0.2)}px Arial`;
-            ctx.fillText('👧', room.malakX, room.malakY);
-            
-            // Malak's name
-            ctx.font = `bold ${Math.min(20, canvas.width * 0.04)}px Fredoka One`;
-            ctx.fillStyle = '#ff6b9d';
-            ctx.textAlign = 'center';
-            ctx.fillText('Malak', room.malakX + canvas.width * 0.08, room.malakY + 25);
-            
-            // Snack bowl
-            const bowlWidth = Math.min(80, canvas.width * 0.15);
-            ctx.fillStyle = '#fff';
-            ctx.beginPath();
-            ctx.ellipse(room.snackBowlX, room.snackBowlY, bowlWidth, bowlWidth * 0.5, 0, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = '#ddd';
-            ctx.lineWidth = 3;
-            ctx.stroke();
-            
-            // Snacks in bowl
-            ctx.textAlign = 'center';
-            ctx.font = `${Math.min(30, canvas.width * 0.06)}px Arial`;
-            const snacks = ['🍿', '🍪', '🥨', '🍿', '🍪'];
-            snacks.forEach((snack, i) => {
-                const offsetX = (i - 2) * (bowlWidth * 0.4);
-                ctx.fillText(snack, room.snackBowlX + offsetX, room.snackBowlY - 5);
-            });
-        }
+        // تحميل المصروفات
+        renderExpenses();
         
-        function spawnShark() {
-            const spawnRate = Math.max(40, 80 - wave * 5);
-            if (Math.random() < 1 / spawnRate) {
-                sharks.push(new Shark());
-            }
-        }
+        // تحميل الملاحظات
+        renderNotes();
         
-        function updateLives() {
-            const livesContainer = document.getElementById('lives');
-            let hearts = '';
-            for (let i = 0; i < lives; i++) {
-                hearts += '🍿';
-            }
-            livesContainer.innerHTML = hearts;
-        }
+        // إضافة مستمعات الأحداث
+        thoughtsArea.addEventListener("input", saveThoughts);
+        addExpenseBtn.addEventListener("click", addExpense);
+        resetExpensesBtn.addEventListener("click", resetAllExpenses);
+        addNoteBtn.addEventListener("click", addQuickNote);
         
-        function gameLoop(timestamp) {
-            if (!gameRunning) return;
-            
-            const deltaTime = timestamp - lastTime;
-            lastTime = timestamp;
-            
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            // Update room dimensions in case of resize
-            room = getRoomDimensions();
-            
-            drawRoom();
-            
-            // Bubbles
-            if (Math.random() < 0.02) bubbles.push(new Bubble());
-            bubbles = bubbles.filter(bubble => {
-                const remove = bubble.update();
-                if (!remove) bubble.draw();
-                return !remove;
-            });
-            
-            spawnShark();
-            
-            // Sharks
-            sharks = sharks.filter(shark => {
-                const status = shark.update(deltaTime || 16);
-                
-                if (status === 'steal') {
-                    lives--;
-                    updateLives();
-                    
-                    // Crumb particles
-                    for (let i = 0; i < 8; i++) {
-                        particles.push(new Particle(room.snackBowlX, room.snackBowlY, '#ff6b9d'));
-                    }
-                    floatingTexts.push(new FloatingText(room.snackBowlX, room.snackBowlY - 50, 'NOM!', '#ff8e53'));
-                    
-                    if (lives <= 0) {
-                        setTimeout(endGame, 500);
-                    }
-                    return false;
-                }
-                
-                if (status === 'remove') return false;
-                
-                shark.draw();
-                return true;
-            });
-            
-            // Particles
-            particles = particles.filter(p => {
-                const remove = p.update();
-                if (!remove) p.draw();
-                return !remove;
-            });
-            
-            // Floating texts
-            floatingTexts = floatingTexts.filter(t => {
-                const remove = t.update();
-                if (!remove) t.draw();
-                return !remove;
-            });
-            
-            // Wave progression
-            if (score > wave * 150) {
-                wave++;
-                document.getElementById('wave').textContent = wave;
-                floatingTexts.push(new FloatingText(canvas.width/2, canvas.height * 0.2, `WAVE ${wave}!`, '#4ecdc4'));
-            }
-            
-            requestAnimationFrame(gameLoop);
-        }
-        
-        // Touch handling for mobile
-        function handleTap(e) {
-            if (!gameRunning) return;
-            
-            e.preventDefault();
-            
-            const touch = e.touches ? e.touches[0] : e;
-            const rect = canvas.getBoundingClientRect();
-            const x = touch.clientX - rect.left;
-            const y = touch.clientY - rect.top;
-            
-            let hit = false;
-            
-            // Check sharks in reverse order (top first)
-            for (let i = sharks.length - 1; i >= 0; i--) {
-                const shark = sharks[i];
-                if (shark.checkTap(x, y)) {
-                    shark.defeated = true;
-                    score += 10 * wave;
-                    document.getElementById('score').textContent = score;
-                    
-                    // Sparkle effects
-                    for (let j = 0; j < 10; j++) {
-                        particles.push(new Particle(shark.x, shark.y, shark.color));
-                    }
-                    floatingTexts.push(new FloatingText(shark.x, shark.y - 40, `+${10 * wave}`));
-                    
-                    // Haptic feedback if available
-                    if (navigator.vibrate) {
-                        navigator.vibrate(50);
-                    }
-                    
-                    hit = true;
-                    break; // Only hit one shark per tap
-                }
-            }
-            
-            if (!hit) {
-                // Tap ripple effect
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-                ctx.beginPath();
-                ctx.arc(x, y, 30, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        // Event listeners
-        canvas.addEventListener('touchstart', handleTap, {passive: false});
-        canvas.addEventListener('mousedown', handleTap);
-        
-        // Prevent zoom and scroll
-        document.addEventListener('touchmove', function(e) {
-            if (e.target === canvas) {
-                e.preventDefault();
-            }
-        }, {passive: false});
-        
-        document.addEventListener('gesturestart', function(e) {
-            e.preventDefault();
+        // إضافة خاصية Enter في حقول الإدخال
+        expenseNameInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") addExpense();
+        });
+        expenseAmountInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") addExpense();
+        });
+        quickNoteInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") addQuickNote();
         });
         
-        // Handle resize
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            room = getRoomDimensions();
-            if (!gameRunning) {
-                drawRoom();
+        // تأثيرات حركية إضافية
+        addAnimationOnAdd();
+    }
+    
+    // تأثيرات بسيطة عند الإضافة
+    function addAnimationOnAdd() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .spending-item, .note-item {
+                animation: slideIn 0.3s ease;
             }
-        });
-        
-        function startGame() {
-            document.getElementById('startScreen').style.display = 'none';
-            gameRunning = true;
-            score = 0;
-            wave = 1;
-            lives = 3;
-            sharks = [];
-            particles = [];
-            floatingTexts = [];
-            bubbles = [];
-            lastTime = performance.now();
-            
-            document.getElementById('score').textContent = '0';
-            document.getElementById('wave').textContent = '1';
-            updateLives();
-            
-            requestAnimationFrame(gameLoop);
-        }
-        
-        function endGame() {
-            gameRunning = false;
-            document.getElementById('finalScore').textContent = score;
-            document.getElementById('finalWave').textContent = wave;
-            document.getElementById('gameOver').style.display = 'flex';
-        }
-        
-        function restartGame() {
-            document.getElementById('gameOver').style.display = 'none';
-            startGame();
-        }
-        
-        // Initial draw
-        drawRoom();
-    </script>
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // بدء التشغيل
+    init();
+</script>
 </body>
 </html>
