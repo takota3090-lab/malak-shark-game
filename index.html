@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#1e1a2f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>لوحتي | سعود</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -16,24 +16,25 @@
         }
 
         :root {
-            --primary: #8b5cf6;
-            --primary-dark: #6d28d9;
-            --primary-light: #a78bfa;
-            --bg-dark: #0a0a1a;
-            --bg-card: #1e1e2f;
-            --bg-surface: #2a2a3a;
-            --text-primary: #ffffff;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-            --accent-gold: #fbbf24;
-            --danger: #f87171;
-            --success: #4ade80;
-            --border-light: rgba(255, 255, 255, 0.12);
+            --primary: #c9a03d;
+            --primary-dark: #b28b2c;
+            --primary-light: #e0b85e;
+            --bg-dark: #1e1a2f;
+            --bg-card: #2a2438;
+            --bg-surface: #352f44;
+            --text-primary: #f5efe7;
+            --text-secondary: #dbd0c0;
+            --text-muted: #a99f8c;
+            --accent-gold: #e9c46a;
+            --danger: #e07a5f;
+            --success: #81b29a;
+            --border-light: rgba(233, 196, 106, 0.25);
+            --glow: rgba(201, 160, 61, 0.3);
         }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            background: linear-gradient(145deg, #1a1528 0%, #241f35 100%);
             height: 100vh;
             overflow: hidden;
             color: var(--text-primary);
@@ -43,7 +44,34 @@
             left: 0;
         }
 
-        /* App Container - Full Screen No Scroll */
+        /* Decorative Elements */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            opacity: 0.1;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            bottom: -120px;
+            left: -120px;
+            opacity: 0.08;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* App Container */
         .app-container {
             height: 100vh;
             display: flex;
@@ -59,13 +87,13 @@
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
-            background: linear-gradient(180deg, rgba(10, 10, 26, 0.95) 0%, rgba(10, 10, 26, 0) 100%);
+            background: linear-gradient(180deg, rgba(30, 26, 47, 0.95) 0%, rgba(30, 26, 47, 0) 100%);
         }
 
         .logo {
             font-size: 1.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, #c084fc 100%);
+            background: linear-gradient(135deg, #e9c46a 0%, #c9a03d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -83,7 +111,7 @@
         #current-time {
             font-size: 0.85rem;
             font-weight: 700;
-            color: white;
+            color: var(--accent-gold);
         }
 
         #current-date {
@@ -100,7 +128,7 @@
         .greeting {
             font-size: 1.1rem;
             font-weight: 700;
-            color: white;
+            color: var(--text-primary);
         }
 
         .date-display {
@@ -121,9 +149,9 @@
             flex: 1;
             padding: 0.6rem 0.8rem;
             border-radius: 20px;
-            border: none;
+            border: 1px solid var(--border-light);
             background: var(--bg-surface);
-            color: white;
+            color: var(--text-primary);
             font-family: inherit;
             font-weight: 600;
             font-size: 0.8rem;
@@ -141,10 +169,11 @@
 
         .quick-btn.primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+            border: none;
+            box-shadow: 0 4px 12px var(--glow);
         }
 
-        /* Stats Grid - Compact */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -160,6 +189,7 @@
             padding: 0.7rem;
             text-align: center;
             border: 1px solid var(--border-light);
+            backdrop-filter: blur(10px);
         }
 
         .stat-card .stat-icon {
@@ -170,7 +200,7 @@
         .stat-card .stat-value {
             font-size: 1.3rem;
             font-weight: 800;
-            color: white;
+            color: var(--accent-gold);
         }
 
         .stat-card .stat-label {
@@ -209,8 +239,8 @@
         }
 
         .tab-btn.active {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         /* Content Area */
@@ -268,7 +298,7 @@
         .item-info h4 {
             font-size: 0.85rem;
             font-weight: 600;
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 0.2rem;
         }
 
@@ -307,7 +337,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            background: linear-gradient(to bottom, var(--primary), var(--accent-gold));
             border-radius: 3px 0 0 3px;
         }
 
@@ -325,7 +355,7 @@
         .thought-title {
             font-weight: 700;
             font-size: 0.85rem;
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 0.3rem;
         }
 
@@ -379,12 +409,13 @@
             height: 100%;
             border-radius: 3px;
             transition: width 0.5s ease;
+            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
         }
 
         .bar-value {
             font-size: 0.7rem;
             font-weight: 600;
-            color: white;
+            color: var(--accent-gold);
             min-width: 40px;
             text-align: left;
         }
@@ -445,7 +476,7 @@
         .modal-title {
             font-size: 1.1rem;
             font-weight: 700;
-            color: white;
+            color: var(--accent-gold);
         }
 
         .close-btn {
@@ -454,7 +485,7 @@
             border-radius: 50%;
             border: 1px solid var(--border-light);
             background: var(--bg-surface);
-            color: white;
+            color: var(--text-primary);
             font-size: 1rem;
             cursor: pointer;
         }
@@ -476,7 +507,7 @@
             border-radius: 16px;
             border: 1px solid var(--border-light);
             background: var(--bg-surface);
-            color: white;
+            color: var(--text-primary);
             font-family: inherit;
             font-size: 0.85rem;
             outline: none;
@@ -484,7 +515,7 @@
 
         .form-input:focus {
             border-color: var(--primary);
-            outline: none;
+            box-shadow: 0 0 0 2px var(--glow);
         }
 
         .form-input::placeholder {
@@ -498,7 +529,7 @@
 
         select.form-input {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e9c46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: left 0.8rem center;
             padding-left: 2rem;
@@ -528,7 +559,7 @@
             bottom: 80px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: var(--success);
+            background: linear-gradient(135deg, var(--success), #6a9c89);
             color: white;
             padding: 0.6rem 1.2rem;
             border-radius: 40px;
@@ -548,7 +579,7 @@
         }
 
         .toast.error {
-            background: var(--danger);
+            background: linear-gradient(135deg, var(--danger), #c44536);
         }
     </style>
 </head>
@@ -894,14 +925,13 @@
         const cats = {};
         expenses.forEach(e => cats[e.category] = (cats[e.category] || 0) + e.amount);
         const maxVal = Math.max(...Object.values(cats));
-        const colors = ['#8b5cf6', '#ec4899', '#14b8a6', '#fbbf24', '#f87171', '#a855f7'];
         
         const chart = document.getElementById('category-chart');
-        chart.innerHTML = Object.entries(cats).map(([cat, val], i) => `
+        chart.innerHTML = Object.entries(cats).map(([cat, val]) => `
             <div class="category-bar">
                 <div class="bar-label">${cat}</div>
                 <div class="bar-track">
-                    <div class="bar-fill" style="width: ${(val/maxVal)*100}%; background: ${colors[i % colors.length]}"></div>
+                    <div class="bar-fill" style="width: ${(val/maxVal)*100}%"></div>
                 </div>
                 <div class="bar-value">${formatNum(val)} ر.س</div>
             </div>
