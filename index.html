@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#f5f0e8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>خواطر أفنان | سعود</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -22,11 +22,9 @@
             --mid-gray: #6b6b6b;
             --light-gray: #e8e6e2;
             --beige: #f5f0e8;
-            --warm-beige: #ede6db;
             --off-white: #fafaf8;
             --paper: #fefaf5;
             --border-light: #e2ddd4;
-            --border-dark: #d4ccc0;
             --accent-gold: #c9ad7a;
             --accent-gold-dark: #b89a60;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -35,7 +33,7 @@
         }
 
         body {
-            font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
+            font-family: 'Cairo', 'Amiri', 'Tajawal', system-ui, sans-serif;
             background: var(--beige);
             height: 100vh;
             overflow: hidden;
@@ -59,6 +57,12 @@
             pointer-events: none;
             opacity: 0.15;
             z-index: 0;
+            animation: subtleMove 60s linear infinite;
+        }
+
+        @keyframes subtleMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
         }
 
         /* App Container */
@@ -69,11 +73,11 @@
             overflow: hidden;
             position: relative;
             z-index: 10;
-            background: rgba(245, 240, 232, 0.92);
+            background: rgba(245, 240, 232, 0.88);
             backdrop-filter: blur(2px);
         }
 
-        /* Premium Header - Minimalist */
+        /* Premium Header with Animation */
         .app-header {
             background: var(--off-white);
             padding: 1rem 1.5rem;
@@ -83,14 +87,29 @@
             border-bottom: 1px solid var(--border-light);
             flex-shrink: 0;
             box-shadow: var(--shadow-sm);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo-section h1 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            font-family: 'Amiri', 'Cairo', serif;
-            color: var(--pure-black);
-            letter-spacing: -0.5px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            font-family: 'Amiri', 'Tajawal', serif;
+            background: linear-gradient(135deg, #2c2c2c, #6b5a3a, #c9ad7a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -1px;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .logo-section p {
@@ -104,43 +123,100 @@
             background: var(--light-gray);
             padding: 0.4rem 0.8rem;
             border-radius: 40px;
+            transition: all 0.3s;
         }
 
-        #current-time {
+        .time-section:hover {
+            transform: scale(1.02);
+        }
+
+        #current-time, #current-time-manage {
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--pure-black);
         }
 
-        #current-date {
-            font-size: 0.55rem;
-            color: var(--mid-gray);
-        }
-
-        /* Greeting Section - Elegant Card */
-        .greeting-section {
-            padding: 1rem 1.5rem 0.5rem;
+        /* Navigation Tabs with Animation */
+        .nav-tabs {
+            display: flex;
+            background: var(--off-white);
+            border-bottom: 1px solid var(--border-light);
             flex-shrink: 0;
         }
 
+        .nav-btn {
+            flex: 1;
+            padding: 0.9rem 0;
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--mid-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .nav-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-btn.active {
+            color: var(--pure-black);
+        }
+
+        .nav-btn.active::after {
+            width: 40%;
+        }
+
+        .nav-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Greeting Card with Animation */
         .greeting-card {
             background: var(--off-white);
             border-radius: 28px;
             padding: 1rem 1.2rem;
+            margin: 1rem 1.5rem 0.5rem;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-sm);
+            animation: fadeInUp 0.6s ease;
+            transition: all 0.3s;
+        }
+
+        .greeting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .greeting {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--pure-black);
-            font-family: 'Amiri', serif;
         }
 
         .greeting-name {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.1rem;
+            font-weight: 800;
             color: var(--accent-gold-dark);
         }
 
@@ -151,7 +227,7 @@
             font-style: italic;
         }
 
-        /* Stats Card - Minimal */
+        /* Stats Card */
         .stats-card {
             margin: 0.5rem 1.5rem 1rem;
             background: var(--off-white);
@@ -162,7 +238,8 @@
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
-            box-shadow: var(--shadow-sm);
+            animation: fadeInUp 0.6s ease 0.1s backwards;
+            transition: all 0.3s;
         }
 
         .stat-item {
@@ -171,51 +248,42 @@
         }
 
         .stat-value {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--pure-black);
+            transition: all 0.3s;
         }
 
-        .stat-label {
-            font-size: 0.65rem;
-            color: var(--mid-gray);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .stat-value.count-change {
+            transform: scale(1.1);
+            color: var(--accent-gold-dark);
         }
 
-        .divider {
-            width: 1px;
-            height: 30px;
-            background: var(--border-light);
-        }
-
-        /* Add Thought Button - Minimal */
+        /* Add Button */
         .add-button {
             margin: 0 1.5rem 1rem;
             background: var(--pure-black);
             border: none;
-            padding: 1rem;
+            padding: 0.9rem;
             border-radius: 60px;
             color: var(--off-white);
-            font-family: inherit;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: var(--shadow-sm);
             flex-shrink: 0;
+            animation: fadeInUp 0.6s ease 0.2s backwards;
         }
 
         .add-button:active {
             transform: scale(0.97);
-            background: var(--soft-black);
         }
 
-        /* Filter Tabs */
+        /* Filter Tabs - Only on Home Page */
         .filter-tabs {
             display: flex;
             gap: 0.5rem;
@@ -224,6 +292,7 @@
             flex-shrink: 0;
             overflow-x: auto;
             scrollbar-width: none;
+            animation: fadeInUp 0.6s ease 0.25s backwards;
         }
 
         .filter-tabs::-webkit-scrollbar {
@@ -236,7 +305,6 @@
             background: var(--light-gray);
             border: 1px solid var(--border-light);
             color: var(--dark-gray);
-            font-family: inherit;
             font-size: 0.75rem;
             font-weight: 500;
             cursor: pointer;
@@ -247,14 +315,12 @@
         .filter-btn.active {
             background: var(--pure-black);
             color: var(--off-white);
-            border: none;
         }
 
-        /* Thoughts List */
+        /* Thoughts Container */
         .thoughts-container {
             flex: 1;
             overflow-y: auto;
-            overflow-x: hidden;
             padding: 0 1.5rem 1rem;
             scrollbar-width: thin;
         }
@@ -263,52 +329,35 @@
             width: 4px;
         }
 
-        .thoughts-container::-webkit-scrollbar-track {
-            background: var(--light-gray);
-            border-radius: 10px;
-        }
-
-        .thoughts-container::-webkit-scrollbar-thumb {
-            background: var(--mid-gray);
-            border-radius: 10px;
-        }
-
-        /* Thought Card - Journal Style */
+        /* Thought Card - Home Page (No Mood Display) */
         .thought-card {
             background: var(--paper);
             border: 1px solid var(--border-light);
             border-radius: 24px;
-            padding: 1.2rem;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 1.1rem;
+            margin-bottom: 0.8rem;
             position: relative;
             box-shadow: var(--shadow-sm);
-            animation: fadeInUp 0.3s ease;
+            animation: cardFadeIn 0.4s ease;
+            transition: all 0.3s;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .thought-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
-        .thought-card:active {
-            transform: scale(0.98);
-            background: var(--off-white);
+        @keyframes cardFadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .thought-card::before {
             content: '';
             position: absolute;
             right: 0;
-            top: 20px;
-            bottom: 20px;
+            top: 16px;
+            bottom: 16px;
             width: 3px;
             background: var(--accent-gold);
             border-radius: 3px;
@@ -316,84 +365,159 @@
 
         .thought-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .thought-mood {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.25rem 0.8rem;
-            border-radius: 40px;
-            font-size: 0.7rem;
-            font-weight: 500;
-            background: var(--light-gray);
-            color: var(--dark-gray);
+            margin-bottom: 0.6rem;
         }
 
         .thought-date {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--mid-gray);
         }
 
         .thought-title {
             font-weight: 700;
             font-size: 1rem;
-            font-family: 'Amiri', serif;
             color: var(--pure-black);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .thought-content {
-            font-size: 0.85rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
             color: var(--dark-gray);
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        .thought-footer {
-            margin-top: 0.8rem;
-            display: flex;
-            justify-content: flex-end;
-            border-top: 1px solid var(--border-light);
-            padding-top: 0.6rem;
+        /* Management Card - Shows Mood */
+        .manage-card {
+            background: var(--paper);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            animation: cardFadeIn 0.4s ease;
+            transition: all 0.3s;
         }
 
-        .delete-hint {
+        .manage-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .manage-card::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 16px;
+            bottom: 16px;
+            width: 3px;
+            background: var(--accent-gold);
+        }
+
+        .manage-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .manage-mood {
+            padding: 0.2rem 0.7rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .manage-date {
             font-size: 0.55rem;
             color: var(--mid-gray);
-            opacity: 0.6;
+        }
+
+        .manage-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--pure-black);
+            margin-bottom: 0.4rem;
+        }
+
+        .manage-content {
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: var(--dark-gray);
+            margin-bottom: 0.8rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: flex-end;
+            border-top: 1px solid var(--border-light);
+            padding-top: 0.8rem;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            font-family: inherit;
+        }
+
+        .edit-btn {
+            background: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .edit-btn:active {
+            transform: scale(0.95);
+        }
+
+        .delete-btn {
+            background: #f0e4dc;
+            color: #b85c3a;
+        }
+
+        .delete-btn:active {
+            transform: scale(0.95);
         }
 
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 3rem 1.5rem;
+            padding: 2.5rem 1rem;
             color: var(--mid-gray);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .empty-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
             opacity: 0.5;
+            animation: bounce 2s infinite;
         }
 
-        .empty-state h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark-gray);
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
-        .empty-state p {
-            font-size: 0.75rem;
-        }
-
-        /* Modal - Minimal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -407,6 +531,7 @@
             padding: 1rem;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 0.2s ease;
         }
 
         .modal.active {
@@ -420,21 +545,25 @@
             width: 100%;
             max-width: 340px;
             border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-lg);
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
         }
 
         .modal-title {
             font-size: 1rem;
             font-weight: 700;
             color: var(--pure-black);
-            font-family: 'Amiri', serif;
         }
 
         .close-btn {
@@ -443,30 +572,31 @@
             border-radius: 50%;
             border: 1px solid var(--border-light);
             background: var(--light-gray);
-            color: var(--dark-gray);
-            font-size: 1rem;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .close-btn:active {
+            transform: scale(0.95);
         }
 
         .form-group {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .form-label {
             font-size: 0.7rem;
-            font-weight: 500;
             color: var(--mid-gray);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             display: block;
         }
 
         .form-input {
             width: 100%;
-            padding: 0.8rem 1rem;
+            padding: 0.75rem 1rem;
             border-radius: 40px;
             border: 1px solid var(--border-light);
             background: var(--off-white);
-            color: var(--pure-black);
             font-family: inherit;
             font-size: 0.85rem;
             outline: none;
@@ -475,18 +605,18 @@
 
         .form-input:focus {
             border-color: var(--accent-gold);
-            box-shadow: 0 0 0 2px rgba(201, 173, 122, 0.2);
+            transform: scale(1.01);
         }
 
         textarea.form-input {
-            min-height: 100px;
+            min-height: 90px;
             resize: none;
             border-radius: 24px;
         }
 
         select.form-input {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: left 1rem center;
             padding-left: 2.5rem;
@@ -494,13 +624,12 @@
 
         .submit-btn {
             width: 100%;
-            padding: 0.9rem;
+            padding: 0.8rem;
             border-radius: 40px;
             border: none;
             background: var(--pure-black);
-            color: var(--off-white);
+            color: white;
             font-weight: 600;
-            font-size: 0.85rem;
             margin-top: 0.5rem;
             cursor: pointer;
             transition: all 0.2s;
@@ -508,7 +637,6 @@
 
         .submit-btn:active {
             transform: scale(0.97);
-            background: var(--soft-black);
         }
 
         /* Toast */
@@ -519,32 +647,20 @@
             transform: translateX(-50%) translateY(100px);
             background: var(--pure-black);
             color: var(--off-white);
-            padding: 0.7rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 60px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.7rem;
             opacity: 0;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             z-index: 3000;
             pointer-events: none;
             white-space: nowrap;
-            box-shadow: var(--shadow-md);
         }
 
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
-        /* Mood Colors - Soft */
-        .mood-😊, .mood-سعيد { background: #e8e2d4; color: #7a5a3a; }
-        .mood-🤔, .mood-متفكر { background: #e8e2d4; color: #7a5a3a; }
-        .mood-😌, .mood-هادئ { background: #e8e2d4; color: #7a5a3a; }
-        .mood-💪, .mood-متحمس { background: #e8e2d4; color: #7a5a3a; }
-        .mood-❤️, .mood-ممتن { background: #e8e2d4; color: #7a5a3a; }
-        .mood-😢, .mood-حزين { background: #e8e2d4; color: #7a5a3a; }
-        .mood-😞, .mood-مكتئب { background: #e8e2d4; color: #7a5a3a; }
-        .mood-😤, .mood-متوتر { background: #e8e2d4; color: #7a5a3a; }
     </style>
 </head>
 <body>
@@ -552,7 +668,7 @@
         <!-- Header -->
         <div class="app-header">
             <div class="logo-section">
-                <h1>خواطر أفنان</h1>
+                <h1>✨ خواطر أفنان ✨</h1>
                 <p>تصميم: سعود</p>
             </div>
             <div class="time-section">
@@ -561,65 +677,69 @@
             </div>
         </div>
 
-        <!-- Greeting Section -->
-        <div class="greeting-section">
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-btn active" data-page="home">📖 الرئيسية</button>
+            <button class="nav-btn" data-page="manage">✏️ إدارة الخواطر</button>
+        </div>
+
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page" style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
             <div class="greeting-card">
                 <div class="greeting" id="greeting-text">صباح الخير <span class="greeting-name">أفنان</span> 👋</div>
                 <div class="quote">"اكتبي ما يجول في خاطرك، فالكلمات تبقى"</div>
             </div>
-        </div>
 
-        <!-- Stats Card -->
-        <div class="stats-card">
-            <div class="stat-item">
-                <div class="stat-value" id="total-thoughts">0</div>
-                <div class="stat-label">خاطرة مسجلة</div>
-            </div>
-            <div class="divider"></div>
-            <div class="stat-item">
-                <div class="stat-value" id="mood-today">📖</div>
-                <div class="stat-label">المزاج الأكثر</div>
-            </div>
-        </div>
-
-        <!-- Add Button -->
-        <button class="add-button" onclick="openModal()">
-            <span>✍️</span> خاطرة جديدة
-        </button>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">الكل</button>
-            <button class="filter-btn" data-filter="😊 سعيد">😊 سعيد</button>
-            <button class="filter-btn" data-filter="🤔 متفكر">🤔 متفكر</button>
-            <button class="filter-btn" data-filter="😌 هادئ">😌 هادئ</button>
-            <button class="filter-btn" data-filter="💪 متحمس">💪 متحمس</button>
-            <button class="filter-btn" data-filter="❤️ ممتن">❤️ ممتن</button>
-            <button class="filter-btn" data-filter="😢 حزين">😢 حزين</button>
-            <button class="filter-btn" data-filter="😞 مكتئب">😞 مكتئب</button>
-            <button class="filter-btn" data-filter="😤 متوتر">😤 متوتر</button>
-        </div>
-
-        <!-- Thoughts List -->
-        <div class="thoughts-container">
-            <div id="thoughts-list">
-                <div class="empty-state">
-                    <div class="empty-icon">📖</div>
-                    <h3>لا توجد خواطر بعد</h3>
-                    <p>اضغطي على الزر أعلاه لكتابة أول خاطرة</p>
+            <div class="stats-card">
+                <div class="stat-item">
+                    <div class="stat-value" id="total-thoughts-home">0</div>
+                    <div class="stat-label">خاطرة مسجلة</div>
                 </div>
+                <div class="divider"></div>
+                <div class="stat-item">
+                    <div class="stat-value" id="mood-today">📖</div>
+                    <div class="stat-label">المزاج الأكثر</div>
+                </div>
+            </div>
+
+            <button class="add-button" onclick="playSound('click'); openAddModal();">
+                <span>✍️</span> خاطرة جديدة
+            </button>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active" data-filter="all">الكل</button>
+                <button class="filter-btn" data-filter="😊 سعيد">😊 سعيد</button>
+                <button class="filter-btn" data-filter="🤔 متفكر">🤔 متفكر</button>
+                <button class="filter-btn" data-filter="😌 هادئ">😌 هادئ</button>
+                <button class="filter-btn" data-filter="💪 متحمس">💪 متحمس</button>
+                <button class="filter-btn" data-filter="❤️ ممتن">❤️ ممتن</button>
+                <button class="filter-btn" data-filter="😢 حزين">😢 حزين</button>
+                <button class="filter-btn" data-filter="😞 مكتئب">😞 مكتئب</button>
+                <button class="filter-btn" data-filter="😤 متوتر">😤 متوتر</button>
+            </div>
+
+            <div class="thoughts-container" id="home-container">
+                <div id="home-list"></div>
+            </div>
+        </div>
+
+        <!-- MANAGE PAGE -->
+        <div id="manage-page" class="page" style="display: none; flex-direction: column; flex: 1; overflow: hidden;">
+            <div class="thoughts-container" id="manage-container">
+                <div id="manage-list"></div>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Add/Edit Modal -->
     <div class="modal" id="thought-modal">
         <div class="modal-card">
             <div class="modal-header">
-                <div class="modal-title">✍️ خاطرة جديدة</div>
-                <button class="close-btn" onclick="closeModal()">✕</button>
+                <div class="modal-title" id="modal-title">✍️ خاطرة جديدة</div>
+                <button class="close-btn" onclick="playSound('click'); closeModal();">✕</button>
             </div>
-            <form id="thought-form" onsubmit="handleThought(event)">
+            <form id="thought-form" onsubmit="handleSaveThought(event)">
+                <input type="hidden" id="edit-id" value="">
                 <div class="form-group">
                     <label class="form-label">العنوان</label>
                     <input type="text" class="form-input" id="thought-title" placeholder="عنوان مختصر..." required>
@@ -641,7 +761,7 @@
                         <option value="😤 متوتر">😤 متوتر</option>
                     </select>
                 </div>
-                <button type="submit" class="submit-btn">🌟 حفظ الخاطرة</button>
+                <button type="submit" class="submit-btn" id="submit-btn-text">🌟 حفظ الخاطرة</button>
             </form>
         </div>
     </div>
@@ -649,43 +769,108 @@
     <div id="toast" class="toast"></div>
 
     <script>
+        // Sound System
+        let soundEnabled = true;
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playSound(type) {
+            if (!soundEnabled) return;
+            initAudio();
+            if (!audioCtx) return;
+            
+            try {
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                gainNode.gain.value = 0.15;
+                
+                if (type === 'click') {
+                    oscillator.frequency.value = 800;
+                    oscillator.type = 'sine';
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
+                    oscillator.stop(audioCtx.currentTime + 0.1);
+                } else if (type === 'success') {
+                    oscillator.frequency.value = 880;
+                    oscillator.type = 'sine';
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
+                    oscillator.stop(audioCtx.currentTime + 0.3);
+                    setTimeout(() => {
+                        const osc2 = audioCtx.createOscillator();
+                        const gain2 = audioCtx.createGain();
+                        osc2.connect(gain2);
+                        gain2.connect(audioCtx.destination);
+                        osc2.frequency.value = 1100;
+                        osc2.type = 'sine';
+                        gain2.gain.value = 0.12;
+                        osc2.start();
+                        gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
+                        osc2.stop(audioCtx.currentTime + 0.2);
+                    }, 80);
+                } else if (type === 'delete') {
+                    oscillator.frequency.value = 300;
+                    oscillator.type = 'sawtooth';
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
+                    oscillator.stop(audioCtx.currentTime + 0.2);
+                }
+            } catch(e) { console.log('Audio error'); }
+        }
+
+        // Enable audio on first touch
+        document.addEventListener('touchstart', () => {
+            initAudio();
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        });
+        document.addEventListener('click', () => {
+            initAudio();
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        });
+
+        // Data
         let thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
         let currentFilter = 'all';
+        let editingId = null;
         const userName = "أفنان";
 
+        // DOM Elements
+        const homeContainer = document.getElementById('home-list');
+        const manageContainer = document.getElementById('manage-list');
+        const totalThoughtsSpan = document.getElementById('total-thoughts-home');
+        const moodTodaySpan = document.getElementById('mood-today');
+
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             updateDateTime();
             setInterval(updateDateTime, 60000);
             updateGreeting();
-            updateUI();
+            updateAllUI();
             setupFilters();
+            setupNavigation();
         });
 
         function updateDateTime() {
             const now = new Date();
-            document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute: '2-digit'});
-            document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long'});
+            const timeStr = now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute: '2-digit'});
+            const dateStr = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long'});
+            document.getElementById('current-time').textContent = timeStr;
+            document.getElementById('current-date').textContent = dateStr;
             updateGreeting();
         }
 
         function updateGreeting() {
             const hour = new Date().getHours();
             const greetingElement = document.getElementById('greeting-text');
-            let timeGreeting = '';
-            
-            if (hour < 12) {
-                timeGreeting = 'صباح الخير';
-            } else if (hour < 17) {
-                timeGreeting = 'مساء الخير';
-            } else {
-                timeGreeting = 'مساء النور';
-            }
-            
+            let timeGreeting = hour < 12 ? 'صباح الخير' : (hour < 17 ? 'مساء الخير' : 'مساء النور');
             greetingElement.innerHTML = `${timeGreeting} <span class="greeting-name">${userName}</span> 👋`;
-        }
-
-        function formatNum(num) {
-            return num.toLocaleString('ar-SA');
         }
 
         function showToast(msg) {
@@ -695,49 +880,87 @@
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
 
-        function openModal() {
+        function openAddModal() {
+            editingId = null;
+            document.getElementById('modal-title').textContent = '✍️ خاطرة جديدة';
+            document.getElementById('submit-btn-text').textContent = '🌟 حفظ الخاطرة';
+            document.getElementById('edit-id').value = '';
+            document.getElementById('thought-title').value = '';
+            document.getElementById('thought-content').value = '';
+            document.getElementById('thought-mood').value = '😊 سعيد';
+            document.getElementById('thought-modal').classList.add('active');
+        }
+
+        function openEditModal(id) {
+            playSound('click');
+            const thought = thoughts.find(t => t.id === id);
+            if (!thought) return;
+            editingId = id;
+            document.getElementById('modal-title').textContent = '✏️ تعديل الخاطرة';
+            document.getElementById('submit-btn-text').textContent = '💾 تحديث الخاطرة';
+            document.getElementById('edit-id').value = id;
+            document.getElementById('thought-title').value = thought.title;
+            document.getElementById('thought-content').value = thought.content;
+            document.getElementById('thought-mood').value = thought.mood;
             document.getElementById('thought-modal').classList.add('active');
         }
 
         function closeModal() {
             document.getElementById('thought-modal').classList.remove('active');
+            editingId = null;
         }
 
-        function setupFilters() {
-            const filters = document.querySelectorAll('.filter-btn');
-            filters.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    filters.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    currentFilter = btn.dataset.filter;
-                    renderThoughts();
-                });
-            });
-        }
-
-        function handleThought(e) {
+        function handleSaveThought(e) {
             e.preventDefault();
-            const thought = {
-                id: Date.now(),
-                title: document.getElementById('thought-title').value,
-                content: document.getElementById('thought-content').value,
-                mood: document.getElementById('thought-mood').value,
-                date: new Date().toLocaleDateString('ar-SA', {day: 'numeric', month: 'long', year: 'numeric'}),
-                timestamp: new Date().toISOString()
-            };
-            thoughts.unshift(thought);
+            const title = document.getElementById('thought-title').value.trim();
+            const content = document.getElementById('thought-content').value.trim();
+            const mood = document.getElementById('thought-mood').value;
+
+            if (!title || !content) {
+                showToast('⚠️ الرجاء إدخال العنوان والخاطرة');
+                return;
+            }
+
+            const editId = document.getElementById('edit-id').value;
+            if (editId) {
+                const index = thoughts.findIndex(t => t.id == editId);
+                if (index !== -1) {
+                    thoughts[index] = {
+                        ...thoughts[index],
+                        title: title,
+                        content: content,
+                        mood: mood,
+                        editedAt: new Date().toISOString()
+                    };
+                    playSound('success');
+                    showToast('✨ تم تعديل الخاطرة');
+                }
+            } else {
+                const newThought = {
+                    id: Date.now(),
+                    title: title,
+                    content: content,
+                    mood: mood,
+                    date: new Date().toLocaleDateString('ar-SA', {day: 'numeric', month: 'long', year: 'numeric'}),
+                    timestamp: new Date().toISOString()
+                };
+                thoughts.unshift(newThought);
+                playSound('success');
+                showToast('✨ تم حفظ الخاطرة');
+            }
+
             localStorage.setItem('thoughts', JSON.stringify(thoughts));
             closeModal();
-            showToast('✨ تم حفظ الخاطرة');
-            e.target.reset();
-            updateUI();
+            updateAllUI();
         }
 
         function deleteThought(id) {
+            playSound('click');
             if (confirm('🗑️ هل تريدين حذف هذه الخاطرة؟')) {
                 thoughts = thoughts.filter(t => t.id !== id);
                 localStorage.setItem('thoughts', JSON.stringify(thoughts));
-                updateUI();
+                playSound('delete');
+                updateAllUI();
                 showToast('تم حذف الخاطرة');
             }
         }
@@ -745,52 +968,106 @@
         function getMostCommonMood() {
             if (thoughts.length === 0) return '📖';
             const moodCount = {};
-            thoughts.forEach(t => {
-                const mood = t.mood;
-                moodCount[mood] = (moodCount[mood] || 0) + 1;
-            });
+            thoughts.forEach(t => moodCount[t.mood] = (moodCount[t.mood] || 0) + 1);
             const mostCommon = Object.entries(moodCount).sort((a, b) => b[1] - a[1])[0];
             return mostCommon ? mostCommon[0] : '📖';
         }
 
-        function renderThoughts() {
-            const container = document.getElementById('thoughts-list');
-            let filteredThoughts = thoughts;
+        function animateNumber(element, newValue) {
+            element.classList.add('count-change');
+            setTimeout(() => element.classList.remove('count-change'), 300);
+        }
+
+        function renderHome() {
+            let filtered = currentFilter === 'all' ? thoughts : thoughts.filter(t => t.mood === currentFilter);
             
-            if (currentFilter !== 'all') {
-                filteredThoughts = thoughts.filter(t => t.mood === currentFilter);
-            }
-            
-            if (filteredThoughts.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div class="empty-icon">📖</div>
-                        <h3>لا توجد خواطر</h3>
-                        <p>${currentFilter !== 'all' ? 'لا توجد خواطر بهذا المزاج' : 'اكتبي أول خاطرة الآن'}</p>
-                    </div>
-                `;
+            if (filtered.length === 0) {
+                homeContainer.innerHTML = `<div class="empty-state"><div class="empty-icon">📖</div><p>${currentFilter !== 'all' ? 'لا توجد خواطر بهذا المزاج' : 'لا توجد خواطر بعد'}</p></div>`;
                 return;
             }
             
-            container.innerHTML = filteredThoughts.map(t => `
-                <div class="thought-card" onclick="deleteThought(${t.id})">
+            homeContainer.innerHTML = filtered.map(t => `
+                <div class="thought-card">
                     <div class="thought-header">
-                        <span class="thought-mood">${t.mood}</span>
                         <span class="thought-date">${t.date}</span>
                     </div>
                     <div class="thought-title">${escapeHtml(t.title)}</div>
                     <div class="thought-content">${escapeHtml(t.content)}</div>
-                    <div class="thought-footer">
-                        <span class="delete-hint">اضغطي للحذف</span>
+                </div>
+            `).join('');
+        }
+
+        function renderManage() {
+            if (thoughts.length === 0) {
+                manageContainer.innerHTML = `<div class="empty-state"><div class="empty-icon">✏️</div><p>لا توجد خواطر لإدارتها</p></div>`;
+                return;
+            }
+            
+            manageContainer.innerHTML = thoughts.map(t => `
+                <div class="manage-card">
+                    <div class="manage-header">
+                        <span class="manage-mood">${t.mood}</span>
+                        <span class="manage-date">${t.date}</span>
+                    </div>
+                    <div class="manage-title">${escapeHtml(t.title)}</div>
+                    <div class="manage-content">${escapeHtml(t.content)}</div>
+                    <div class="action-buttons">
+                        <button class="edit-btn" onclick="openEditModal(${t.id})">✏️ تعديل</button>
+                        <button class="delete-btn" onclick="deleteThought(${t.id})">🗑️ حذف</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function updateUI() {
-            document.getElementById('total-thoughts').textContent = formatNum(thoughts.length);
-            document.getElementById('mood-today').textContent = getMostCommonMood();
-            renderThoughts();
+        function updateStats() {
+            const newTotal = thoughts.length;
+            const oldTotal = parseInt(totalThoughtsSpan.textContent) || 0;
+            totalThoughtsSpan.textContent = newTotal;
+            if (newTotal !== oldTotal) animateNumber(totalThoughtsSpan, newTotal);
+            moodTodaySpan.textContent = getMostCommonMood();
+        }
+
+        function updateAllUI() {
+            updateStats();
+            renderHome();
+            renderManage();
+        }
+
+        function setupFilters() {
+            const filters = document.querySelectorAll('.filter-btn');
+            filters.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    playSound('click');
+                    filters.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderHome();
+                });
+            });
+        }
+
+        function setupNavigation() {
+            const navBtns = document.querySelectorAll('.nav-btn');
+            const homePage = document.getElementById('home-page');
+            const managePage = document.getElementById('manage-page');
+            
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    playSound('click');
+                    const page = btn.dataset.page;
+                    navBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    if (page === 'home') {
+                        homePage.style.display = 'flex';
+                        managePage.style.display = 'none';
+                    } else {
+                        homePage.style.display = 'none';
+                        managePage.style.display = 'flex';
+                        renderManage();
+                    }
+                });
+            });
         }
 
         function escapeHtml(str) {
@@ -803,10 +1080,12 @@
             });
         }
 
-        window.openModal = openModal;
-        window.closeModal = closeModal;
-        window.handleThought = handleThought;
+        window.openAddModal = openAddModal;
+        window.openEditModal = openEditModal;
         window.deleteThought = deleteThought;
+        window.closeModal = closeModal;
+        window.handleSaveThought = handleSaveThought;
+        window.playSound = playSound;
     </script>
 </body>
 </html>
