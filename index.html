@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#0f0c1a">
+    <meta name="theme-color" content="#f5f0e8">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>خواطر أفنان | سعود</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,92 +16,49 @@
         }
 
         :root {
-            --primary: #d4af37;
-            --primary-dark: #b8942e;
-            --primary-light: #e8c97a;
-            --primary-glow: rgba(212, 175, 55, 0.3);
-            --bg-dark: #0a0a12;
-            --bg-card: #12121c;
-            --bg-surface: #1a1a28;
-            --text-primary: #f5efe7;
-            --text-secondary: #cbc3b5;
-            --text-muted: #8b857a;
-            --mood-happy: #fbbf24;
-            --mood-thinking: #60a5fa;
-            --mood-calm: #34d399;
-            --mood-excited: #f97316;
-            --mood-grateful: #ec489a;
-            --mood-sad: #8b5cf6;
-            --mood-depressed: #6b7280;
-            --mood-stressed: #ef4444;
-            --border-light: rgba(212, 175, 55, 0.2);
-            --border-medium: rgba(212, 175, 55, 0.35);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.5);
+            --pure-black: #1a1a1a;
+            --soft-black: #2a2a2a;
+            --dark-gray: #3a3a3a;
+            --mid-gray: #6b6b6b;
+            --light-gray: #e8e6e2;
+            --beige: #f5f0e8;
+            --warm-beige: #ede6db;
+            --off-white: #fafaf8;
+            --paper: #fefaf5;
+            --border-light: #e2ddd4;
+            --border-dark: #d4ccc0;
+            --accent-gold: #c9ad7a;
+            --accent-gold-dark: #b89a60;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.08);
         }
 
         body {
             font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
-            background: radial-gradient(ellipse at 30% 40%, #0f0f1a, #08080e);
+            background: var(--beige);
             height: 100vh;
             overflow: hidden;
-            color: var(--text-primary);
+            color: var(--soft-black);
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
         }
 
-        /* Premium Animated Background */
-        .bg-stars {
+        /* Subtle Texture Background */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23e2ddd4' fill-opacity='0.2' d='M100 0L200 100L100 200L0 100L100 0Z'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
             pointer-events: none;
+            opacity: 0.15;
             z-index: 0;
-        }
-        
-        .star {
-            position: absolute;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.6) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: twinkle 4s infinite ease-in-out;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.2); }
-        }
-        
-        .glow-aura {
-            position: fixed;
-            top: 20%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            filter: blur(80px);
-            pointer-events: none;
-            z-index: 0;
-            animation: drift 20s infinite;
-        }
-        
-        .glow-aura-2 {
-            bottom: 10%;
-            left: -10%;
-            top: auto;
-            width: 350px;
-            height: 350px;
-            animation: drift 25s infinite reverse;
-        }
-        
-        @keyframes drift {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(30px, -20px); }
         }
 
         /* App Container */
@@ -112,40 +69,39 @@
             overflow: hidden;
             position: relative;
             z-index: 10;
+            background: rgba(245, 240, 232, 0.92);
+            backdrop-filter: blur(2px);
         }
 
-        /* Premium Header */
+        /* Premium Header - Minimalist */
         .app-header {
-            background: rgba(10, 10, 18, 0.85);
-            backdrop-filter: blur(20px);
+            background: var(--off-white);
             padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--border-medium);
+            border-bottom: 1px solid var(--border-light);
             flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
         }
 
         .logo-section h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.4rem;
+            font-weight: 700;
             font-family: 'Amiri', 'Cairo', serif;
-            background: linear-gradient(135deg, #f5da9e, #e8c97a, #d4ae5a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -1px;
+            color: var(--pure-black);
+            letter-spacing: -0.5px;
         }
 
         .logo-section p {
             font-size: 0.65rem;
-            color: var(--text-muted);
+            color: var(--mid-gray);
             margin-top: 0.1rem;
         }
 
         .time-section {
             text-align: right;
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--light-gray);
             padding: 0.4rem 0.8rem;
             border-radius: 40px;
         }
@@ -153,56 +109,52 @@
         #current-time {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--primary-light);
+            color: var(--pure-black);
         }
 
         #current-date {
             font-size: 0.55rem;
-            color: var(--text-secondary);
+            color: var(--mid-gray);
         }
 
-        /* Greeting Section - Personalized */
+        /* Greeting Section - Elegant Card */
         .greeting-section {
             padding: 1rem 1.5rem 0.5rem;
             flex-shrink: 0;
         }
 
         .greeting-card {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
-            backdrop-filter: blur(20px);
+            background: var(--off-white);
             border-radius: 28px;
             padding: 1rem 1.2rem;
-            border: 1px solid var(--border-medium);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
         }
 
         .greeting {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--pure-black);
             font-family: 'Amiri', serif;
         }
 
         .greeting-name {
-            font-size: 1.3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #f5da9e, #e8c97a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold-dark);
         }
 
         .quote {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 0.7rem;
+            color: var(--mid-gray);
             margin-top: 0.3rem;
             font-style: italic;
         }
 
-        /* Stats Card */
+        /* Stats Card - Minimal */
         .stats-card {
             margin: 0.5rem 1.5rem 1rem;
-            background: rgba(18, 18, 28, 0.6);
-            backdrop-filter: blur(20px);
+            background: var(--off-white);
             border-radius: 24px;
             padding: 0.8rem 1rem;
             border: 1px solid var(--border-light);
@@ -210,6 +162,7 @@
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
+            box-shadow: var(--shadow-sm);
         }
 
         .stat-item {
@@ -219,34 +172,33 @@
 
         .stat-value {
             font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #f5da9e, #e8c97a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-weight: 700;
+            color: var(--pure-black);
         }
 
         .stat-label {
             font-size: 0.65rem;
-            color: var(--text-muted);
+            color: var(--mid-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .divider {
             width: 1px;
             height: 30px;
-            background: var(--border-medium);
+            background: var(--border-light);
         }
 
-        /* Add Thought Button */
+        /* Add Thought Button - Minimal */
         .add-button {
             margin: 0 1.5rem 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: var(--pure-black);
             border: none;
             padding: 1rem;
             border-radius: 60px;
-            color: #0a0a12;
+            color: var(--off-white);
             font-family: inherit;
-            font-weight: 800;
+            font-weight: 600;
             font-size: 1rem;
             display: flex;
             align-items: center;
@@ -254,12 +206,13 @@
             gap: 0.5rem;
             cursor: pointer;
             transition: all 0.2s;
-            box-shadow: 0 4px 15px var(--primary-glow);
+            box-shadow: var(--shadow-sm);
             flex-shrink: 0;
         }
 
         .add-button:active {
             transform: scale(0.97);
+            background: var(--soft-black);
         }
 
         /* Filter Tabs */
@@ -280,10 +233,9 @@
         .filter-btn {
             padding: 0.4rem 1rem;
             border-radius: 40px;
-            background: rgba(18, 18, 28, 0.6);
-            backdrop-filter: blur(10px);
+            background: var(--light-gray);
             border: 1px solid var(--border-light);
-            color: var(--text-secondary);
+            color: var(--dark-gray);
             font-family: inherit;
             font-size: 0.75rem;
             font-weight: 500;
@@ -293,8 +245,8 @@
         }
 
         .filter-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #0a0a12;
+            background: var(--pure-black);
+            color: var(--off-white);
             border: none;
         }
 
@@ -312,33 +264,33 @@
         }
 
         .thoughts-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--light-gray);
             border-radius: 10px;
         }
 
         .thoughts-container::-webkit-scrollbar-thumb {
-            background: var(--primary);
+            background: var(--mid-gray);
             border-radius: 10px;
         }
 
-        /* Thought Card */
+        /* Thought Card - Journal Style */
         .thought-card {
-            background: rgba(18, 18, 28, 0.7);
-            backdrop-filter: blur(10px);
+            background: var(--paper);
             border: 1px solid var(--border-light);
-            border-radius: 28px;
+            border-radius: 24px;
             padding: 1.2rem;
             margin-bottom: 1rem;
             cursor: pointer;
             transition: all 0.2s;
             position: relative;
-            animation: fadeInUp 0.4s ease;
+            box-shadow: var(--shadow-sm);
+            animation: fadeInUp 0.3s ease;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(12px);
             }
             to {
                 opacity: 1;
@@ -348,7 +300,7 @@
 
         .thought-card:active {
             transform: scale(0.98);
-            background: rgba(212, 175, 55, 0.08);
+            background: var(--off-white);
         }
 
         .thought-card::before {
@@ -357,9 +309,9 @@
             right: 0;
             top: 20px;
             bottom: 20px;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-            border-radius: 4px;
+            width: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
         }
 
         .thought-header {
@@ -377,26 +329,27 @@
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 500;
-            background: rgba(0, 0, 0, 0.3);
+            background: var(--light-gray);
+            color: var(--dark-gray);
         }
 
         .thought-date {
             font-size: 0.6rem;
-            color: var(--text-muted);
+            color: var(--mid-gray);
         }
 
         .thought-title {
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1rem;
             font-family: 'Amiri', serif;
-            color: var(--primary-light);
+            color: var(--pure-black);
             margin-bottom: 0.5rem;
         }
 
         .thought-content {
             font-size: 0.85rem;
             line-height: 1.6;
-            color: var(--text-secondary);
+            color: var(--dark-gray);
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
@@ -413,7 +366,7 @@
 
         .delete-hint {
             font-size: 0.55rem;
-            color: var(--text-muted);
+            color: var(--mid-gray);
             opacity: 0.6;
         }
 
@@ -421,7 +374,7 @@
         .empty-state {
             text-align: center;
             padding: 3rem 1.5rem;
-            color: var(--text-muted);
+            color: var(--mid-gray);
         }
 
         .empty-icon {
@@ -433,13 +386,14 @@
         .empty-state h3 {
             font-size: 1rem;
             margin-bottom: 0.5rem;
+            color: var(--dark-gray);
         }
 
         .empty-state p {
             font-size: 0.75rem;
         }
 
-        /* Modal */
+        /* Modal - Minimal */
         .modal {
             display: none;
             position: fixed;
@@ -447,8 +401,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
             z-index: 2000;
             padding: 1rem;
             align-items: center;
@@ -460,12 +414,12 @@
         }
 
         .modal-card {
-            background: linear-gradient(145deg, #1a1a28, #12121c);
-            border-radius: 48px;
+            background: var(--paper);
+            border-radius: 32px;
             padding: 1.5rem;
             width: 100%;
             max-width: 340px;
-            border: 1px solid var(--border-medium);
+            border: 1px solid var(--border-light);
             box-shadow: var(--shadow-lg);
         }
 
@@ -477,19 +431,19 @@
         }
 
         .modal-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--primary-light);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--pure-black);
             font-family: 'Amiri', serif;
         }
 
         .close-btn {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            border: 1px solid var(--border-medium);
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            background: var(--light-gray);
+            color: var(--dark-gray);
             font-size: 1rem;
             cursor: pointer;
         }
@@ -501,7 +455,7 @@
         .form-label {
             font-size: 0.7rem;
             font-weight: 500;
-            color: var(--text-muted);
+            color: var(--mid-gray);
             margin-bottom: 0.4rem;
             display: block;
         }
@@ -510,29 +464,29 @@
             width: 100%;
             padding: 0.8rem 1rem;
             border-radius: 40px;
-            border: 1px solid var(--border-medium);
-            background: rgba(0, 0, 0, 0.3);
-            color: var(--text-primary);
+            border: 1px solid var(--border-light);
+            background: var(--off-white);
+            color: var(--pure-black);
             font-family: inherit;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             outline: none;
             transition: all 0.2s;
         }
 
         .form-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px var(--primary-glow);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 2px rgba(201, 173, 122, 0.2);
         }
 
         textarea.form-input {
             min-height: 100px;
             resize: none;
-            border-radius: 28px;
+            border-radius: 24px;
         }
 
         select.form-input {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e8c97a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: left 1rem center;
             padding-left: 2.5rem;
@@ -543,10 +497,10 @@
             padding: 0.9rem;
             border-radius: 40px;
             border: none;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: #0a0a12;
-            font-weight: 800;
-            font-size: 0.9rem;
+            background: var(--pure-black);
+            color: var(--off-white);
+            font-weight: 600;
+            font-size: 0.85rem;
             margin-top: 0.5rem;
             cursor: pointer;
             transition: all 0.2s;
@@ -554,6 +508,7 @@
 
         .submit-btn:active {
             transform: scale(0.97);
+            background: var(--soft-black);
         }
 
         /* Toast */
@@ -562,8 +517,8 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
+            background: var(--pure-black);
+            color: var(--off-white);
             padding: 0.7rem 1.5rem;
             border-radius: 60px;
             font-size: 0.75rem;
@@ -581,27 +536,23 @@
             opacity: 1;
         }
 
-        /* Mood Colors */
-        .mood-😊, .mood-سعيد { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
-        .mood-🤔, .mood-متفكر { background: rgba(96, 165, 250, 0.2); color: #60a5fa; }
-        .mood-😌, .mood-هادئ { background: rgba(52, 211, 153, 0.2); color: #34d399; }
-        .mood-💪, .mood-متحمس { background: rgba(249, 115, 22, 0.2); color: #f97316; }
-        .mood-❤️, .mood-ممتن { background: rgba(236, 72, 153, 0.2); color: #ec489a; }
-        .mood-😢, .mood-حزين { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
-        .mood-😞, .mood-مكتئب { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
-        .mood-😤, .mood-متوتر { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        /* Mood Colors - Soft */
+        .mood-😊, .mood-سعيد { background: #e8e2d4; color: #7a5a3a; }
+        .mood-🤔, .mood-متفكر { background: #e8e2d4; color: #7a5a3a; }
+        .mood-😌, .mood-هادئ { background: #e8e2d4; color: #7a5a3a; }
+        .mood-💪, .mood-متحمس { background: #e8e2d4; color: #7a5a3a; }
+        .mood-❤️, .mood-ممتن { background: #e8e2d4; color: #7a5a3a; }
+        .mood-😢, .mood-حزين { background: #e8e2d4; color: #7a5a3a; }
+        .mood-😞, .mood-مكتئب { background: #e8e2d4; color: #7a5a3a; }
+        .mood-😤, .mood-متوتر { background: #e8e2d4; color: #7a5a3a; }
     </style>
 </head>
 <body>
-    <div class="bg-stars" id="stars"></div>
-    <div class="glow-aura"></div>
-    <div class="glow-aura glow-aura-2"></div>
-
     <div class="app-container">
         <!-- Header -->
         <div class="app-header">
             <div class="logo-section">
-                <h1>✨ خواطر أفنان</h1>
+                <h1>خواطر أفنان</h1>
                 <p>تصميم: سعود</p>
             </div>
             <div class="time-section">
@@ -610,15 +561,15 @@
             </div>
         </div>
 
-        <!-- Greeting - Personalized with Name -->
+        <!-- Greeting Section -->
         <div class="greeting-section">
             <div class="greeting-card">
-                <div class="greeting" id="greeting-text">مرحباً بك 👋</div>
+                <div class="greeting" id="greeting-text">صباح الخير <span class="greeting-name">أفنان</span> 👋</div>
                 <div class="quote">"اكتبي ما يجول في خاطرك، فالكلمات تبقى"</div>
             </div>
         </div>
 
-        <!-- Stats -->
+        <!-- Stats Card -->
         <div class="stats-card">
             <div class="stat-item">
                 <div class="stat-value" id="total-thoughts">0</div>
@@ -626,7 +577,7 @@
             </div>
             <div class="divider"></div>
             <div class="stat-item">
-                <div class="stat-value" id="mood-today">😊</div>
+                <div class="stat-value" id="mood-today">📖</div>
                 <div class="stat-label">المزاج الأكثر</div>
             </div>
         </div>
@@ -650,7 +601,7 @@
         </div>
 
         <!-- Thoughts List -->
-        <div class="thoughts-container" id="thoughts-container">
+        <div class="thoughts-container">
             <div id="thoughts-list">
                 <div class="empty-state">
                     <div class="empty-icon">📖</div>
@@ -702,25 +653,7 @@
         let currentFilter = 'all';
         const userName = "أفنان";
 
-        // Create stars background
-        function createStars() {
-            const container = document.getElementById('stars');
-            for (let i = 0; i < 80; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 4 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.animationDuration = Math.random() * 3 + 2 + 's';
-                container.appendChild(star);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            createStars();
             updateDateTime();
             setInterval(updateDateTime, 60000);
             updateGreeting();
@@ -732,7 +665,7 @@
             const now = new Date();
             document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute: '2-digit'});
             document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long'});
-            updateGreeting(); // Update greeting when time changes
+            updateGreeting();
         }
 
         function updateGreeting() {
@@ -809,29 +742,15 @@
             }
         }
 
-        function getMoodClass(mood) {
-            const moodMap = {
-                '😊 سعيد': 'mood-😊',
-                '🤔 متفكر': 'mood-🤔',
-                '😌 هادئ': 'mood-😌',
-                '💪 متحمس': 'mood-💪',
-                '❤️ ممتن': 'mood-❤️',
-                '😢 حزين': 'mood-😢',
-                '😞 مكتئب': 'mood-😞',
-                '😤 متوتر': 'mood-😤'
-            };
-            return moodMap[mood] || '';
-        }
-
         function getMostCommonMood() {
-            if (thoughts.length === 0) return '😊';
+            if (thoughts.length === 0) return '📖';
             const moodCount = {};
             thoughts.forEach(t => {
                 const mood = t.mood;
                 moodCount[mood] = (moodCount[mood] || 0) + 1;
             });
             const mostCommon = Object.entries(moodCount).sort((a, b) => b[1] - a[1])[0];
-            return mostCommon ? mostCommon[0].split(' ')[0] : '😊';
+            return mostCommon ? mostCommon[0] : '📖';
         }
 
         function renderThoughts() {
@@ -856,7 +775,7 @@
             container.innerHTML = filteredThoughts.map(t => `
                 <div class="thought-card" onclick="deleteThought(${t.id})">
                     <div class="thought-header">
-                        <span class="thought-mood ${getMoodClass(t.mood)}">${t.mood}</span>
+                        <span class="thought-mood">${t.mood}</span>
                         <span class="thought-date">${t.date}</span>
                     </div>
                     <div class="thought-title">${escapeHtml(t.title)}</div>
