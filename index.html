@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#1e1a2f">
+    <meta name="theme-color" content="#0a0c12">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>لوحتي | سعود</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>لوحتي | تصميم سعود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,22 +19,28 @@
             --primary: #c9a03d;
             --primary-dark: #b28b2c;
             --primary-light: #e0b85e;
-            --bg-dark: #1e1a2f;
-            --bg-card: #2a2438;
-            --bg-surface: #352f44;
+            --primary-glow: rgba(201, 160, 61, 0.3);
+            --secondary: #6c5b7b;
+            --bg-dark: #0a0c12;
+            --bg-card: #14161f;
+            --bg-surface: #1a1d2a;
             --text-primary: #f5efe7;
-            --text-secondary: #dbd0c0;
-            --text-muted: #a99f8c;
+            --text-secondary: #cbc3b5;
+            --text-muted: #8b857a;
             --accent-gold: #e9c46a;
-            --danger: #e07a5f;
-            --success: #81b29a;
-            --border-light: rgba(233, 196, 106, 0.25);
-            --glow: rgba(201, 160, 61, 0.3);
+            --success: #2ecc71;
+            --danger: #e74c3c;
+            --border-light: rgba(201, 160, 61, 0.2);
+            --border-medium: rgba(201, 160, 61, 0.35);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 20px rgba(201, 160, 61, 0.2);
         }
 
         body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(145deg, #1a1528 0%, #241f35 100%);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: radial-gradient(ellipse at 30% 40%, #0f111a, #08090e);
             height: 100vh;
             overflow: hidden;
             color: var(--text-primary);
@@ -44,31 +50,55 @@
             left: 0;
         }
 
-        /* Decorative Elements */
-        body::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            opacity: 0.1;
-            border-radius: 50%;
+        /* Premium Animated Background */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
+            z-index: 0;
         }
-
-        body::after {
-            content: '';
+        
+        .particle {
             position: absolute;
+            background: radial-gradient(circle, rgba(201, 160, 61, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatParticle 12s infinite ease-in-out;
+        }
+        
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-30px) translateX(15px) scale(1.1); opacity: 0.6; }
+        }
+        
+        .glow-orb {
+            position: fixed;
+            top: 20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(201, 160, 61, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulse 8s infinite;
+        }
+        
+        .glow-orb-2 {
+            bottom: 10%;
+            left: -10%;
+            top: auto;
             width: 250px;
             height: 250px;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            bottom: -120px;
-            left: -120px;
-            opacity: 0.08;
-            border-radius: 50%;
-            pointer-events: none;
+            animation: pulse 10s infinite reverse;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
         }
 
         /* App Container */
@@ -78,39 +108,51 @@
             flex-direction: column;
             overflow: hidden;
             position: relative;
+            z-index: 10;
+            backdrop-filter: blur(2px);
         }
 
-        /* Header */
+        /* Premium Header */
         .app-header {
-            padding: 1rem 1rem 0.5rem;
+            background: rgba(10, 12, 18, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--border-medium);
             flex-shrink: 0;
-            background: linear-gradient(180deg, rgba(30, 26, 47, 0.95) 0%, rgba(30, 26, 47, 0) 100%);
+            box-shadow: var(--shadow-sm);
         }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #e9c46a 0%, #c9a03d 100%);
+        .logo-section h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #e9c46a, #c9a03d, #b28b2c);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
         }
 
-        .designer-credit {
-            font-size: 0.6rem;
-            color: var(--text-secondary);
-            opacity: 0.8;
+        .logo-section p {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+            letter-spacing: 0.5px;
         }
 
         .time-section {
-            text-align: left;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 40px;
+            backdrop-filter: blur(10px);
         }
 
         #current-time {
-            font-size: 0.85rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 600;
             color: var(--accent-gold);
         }
 
@@ -119,128 +161,170 @@
             color: var(--text-secondary);
         }
 
-        /* Greeting */
-        .greeting-section {
-            padding: 0 1rem 0.5rem;
+        /* Premium Greeting Card */
+        .greeting-card {
+            background: linear-gradient(135deg, rgba(201, 160, 61, 0.2), rgba(178, 139, 44, 0.1));
+            backdrop-filter: blur(20px);
+            margin: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: 28px;
+            border: 1px solid var(--border-medium);
             flex-shrink: 0;
+            box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .greeting {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 600;
             color: var(--text-primary);
+            margin-bottom: 0.3rem;
         }
 
         .date-display {
             font-size: 0.7rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
         }
 
-        /* Quick Actions */
-        .quick-actions {
-            display: flex;
-            gap: 0.8rem;
-            padding: 0 1rem;
-            margin-bottom: 0.8rem;
-            flex-shrink: 0;
-        }
-
-        .quick-btn {
-            flex: 1;
-            padding: 0.6rem 0.8rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-light);
-            background: var(--bg-surface);
-            color: var(--text-primary);
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .quick-btn:active {
-            transform: scale(0.96);
-        }
-
-        .quick-btn.primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            box-shadow: 0 4px 12px var(--glow);
-        }
-
-        /* Stats Grid */
+        /* Stats Grid - Premium Cards */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            padding: 0 1rem;
-            margin-bottom: 0.8rem;
+            gap: 1rem;
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
             flex-shrink: 0;
         }
 
         .stat-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 0.7rem;
-            text-align: center;
+            background: rgba(20, 22, 31, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 1rem;
             border: 1px solid var(--border-light);
-            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
 
-        .stat-card .stat-icon {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
+        .stat-card:active {
+            transform: scale(0.98);
         }
 
-        .stat-card .stat-value {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--accent-gold);
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
         }
 
-        .stat-card .stat-label {
+        .stat-icon {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 0 4px rgba(201, 160, 61, 0.3));
+        }
+
+        .stat-label {
             font-size: 0.65rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Tabs Navigation */
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #e9c46a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Quick Actions */
+        .actions-section {
+            padding: 0 1.5rem;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .action-btn {
+            flex: 1;
+            padding: 0.7rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-medium);
+            background: rgba(20, 22, 31, 0.6);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
+            background: rgba(201, 160, 61, 0.15);
+        }
+
+        .action-btn.primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        /* Premium Tabs */
         .tabs-nav {
             display: flex;
-            background: var(--bg-card);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(20, 22, 31, 0.6);
+            backdrop-filter: blur(20px);
+            padding: 0.25rem 1rem;
+            border-radius: 40px;
+            margin: 0 1rem 0.5rem;
             flex-shrink: 0;
+            border: 1px solid var(--border-light);
         }
 
         .tab-btn {
             flex: 1;
-            padding: 0.7rem 0;
+            padding: 0.65rem 0;
             background: none;
             border: none;
             color: var(--text-muted);
             font-family: inherit;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.75rem;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.2rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+            border-radius: 30px;
         }
 
         .tab-btn .tab-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .tab-btn.active {
             color: var(--accent-gold);
-            border-bottom: 2px solid var(--accent-gold);
+            background: rgba(201, 160, 61, 0.15);
         }
 
         /* Content Area */
@@ -248,8 +332,7 @@
             flex: 1;
             overflow-y: auto;
             overflow-x: hidden;
-            padding: 0.8rem 0;
-            scrollbar-width: thin;
+            padding: 0.5rem 0;
         }
 
         .content-area::-webkit-scrollbar {
@@ -257,7 +340,7 @@
         }
 
         .content-area::-webkit-scrollbar-track {
-            background: var(--bg-surface);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
         }
 
@@ -266,33 +349,33 @@
             border-radius: 10px;
         }
 
-        /* Tab Content */
         .tab-content {
             display: none;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* List Items */
+        /* Premium List Items */
         .list-item {
-            background: var(--bg-card);
+            background: rgba(20, 22, 31, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 0.8rem;
-            margin-bottom: 0.6rem;
+            border-radius: 20px;
+            padding: 0.9rem;
+            margin-bottom: 0.75rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
         .list-item:active {
-            background: var(--bg-surface);
             transform: scale(0.98);
+            background: rgba(201, 160, 61, 0.1);
         }
 
         .item-info h4 {
@@ -303,65 +386,70 @@
         }
 
         .item-info p {
-            font-size: 0.65rem;
-            color: var(--text-secondary);
+            font-size: 0.6rem;
+            color: var(--text-muted);
         }
 
         .item-amount {
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--danger);
         }
 
-        /* Thought Card */
+        /* Premium Thought Card */
         .thought-card {
-            background: var(--bg-card);
+            background: rgba(20, 22, 31, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 0.8rem;
-            margin-bottom: 0.6rem;
-            position: relative;
+            border-radius: 24px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
+            position: relative;
         }
 
         .thought-card:active {
-            background: var(--bg-surface);
             transform: scale(0.98);
+            background: rgba(201, 160, 61, 0.08);
         }
 
         .thought-card::before {
             content: '';
             position: absolute;
             right: 0;
-            top: 0;
-            bottom: 0;
+            top: 20px;
+            bottom: 20px;
             width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent-gold));
-            border-radius: 3px 0 0 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            border-radius: 3px;
         }
 
         .thought-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
         }
 
         .thought-mood {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
         }
 
         .thought-title {
             font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.4rem;
         }
 
         .thought-content {
             font-size: 0.75rem;
-            line-height: 1.4;
+            line-height: 1.45;
             color: var(--text-secondary);
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -370,37 +458,48 @@
         }
 
         .thought-date {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--text-muted);
-            margin-top: 0.4rem;
+            margin-top: 0.5rem;
         }
 
-        /* Chart */
+        /* Premium Chart */
         .chart-container {
-            background: var(--bg-card);
+            background: rgba(20, 22, 31, 0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 0.8rem;
-            margin-bottom: 0.8rem;
+            border-radius: 24px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .chart-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
         }
 
         .category-bar {
             display: flex;
             align-items: center;
-            margin-bottom: 0.6rem;
-            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            gap: 0.6rem;
         }
 
         .bar-label {
             font-size: 0.7rem;
             color: var(--text-secondary);
-            min-width: 50px;
+            min-width: 55px;
+            font-weight: 500;
         }
 
         .bar-track {
             flex: 1;
-            height: 5px;
-            background: var(--bg-surface);
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
             overflow: hidden;
         }
@@ -409,35 +508,31 @@
             height: 100%;
             border-radius: 3px;
             transition: width 0.5s ease;
-            background: linear-gradient(90deg, var(--primary), var(--accent-gold));
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
         }
 
         .bar-value {
             font-size: 0.7rem;
             font-weight: 600;
             color: var(--accent-gold);
-            min-width: 40px;
+            min-width: 45px;
             text-align: left;
         }
 
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 1.5rem;
-            color: var(--text-secondary);
+            padding: 2rem;
+            color: var(--text-muted);
         }
 
         .empty-icon {
             font-size: 2rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             opacity: 0.5;
         }
 
-        .empty-state p {
-            font-size: 0.75rem;
-        }
-
-        /* Modals */
+        /* Premium Modals */
         .modal {
             display: none;
             position: fixed;
@@ -445,7 +540,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(12px);
             z-index: 2000;
             padding: 1rem;
@@ -458,23 +553,24 @@
         }
 
         .modal-card {
-            background: var(--bg-card);
-            border-radius: 32px;
-            padding: 1.2rem;
+            background: linear-gradient(145deg, #1a1d2a, #14161f);
+            border-radius: 40px;
+            padding: 1.5rem;
             width: 100%;
             max-width: 320px;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-medium);
+            box-shadow: var(--shadow-lg);
         }
 
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .modal-title {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--accent-gold);
         }
@@ -483,113 +579,112 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            border: 1px solid var(--border-light);
-            background: var(--bg-surface);
-            color: var(--text-primary);
+            border: 1px solid var(--border-medium);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
             font-size: 1rem;
             cursor: pointer;
         }
 
         .form-group {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .form-label {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
             margin-bottom: 0.3rem;
             display: block;
         }
 
         .form-input {
             width: 100%;
-            padding: 0.7rem 0.9rem;
-            border-radius: 16px;
-            border: 1px solid var(--border-light);
-            background: var(--bg-surface);
+            padding: 0.75rem 1rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-medium);
+            background: rgba(0, 0, 0, 0.3);
             color: var(--text-primary);
             font-family: inherit;
             font-size: 0.85rem;
             outline: none;
+            transition: all 0.2s;
         }
 
         .form-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 2px var(--glow);
-        }
-
-        .form-input::placeholder {
-            color: var(--text-muted);
+            box-shadow: 0 0 0 2px var(--primary-glow);
         }
 
         textarea.form-input {
-            min-height: 80px;
+            min-height: 85px;
             resize: none;
+            border-radius: 24px;
         }
 
         select.form-input {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23e9c46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e9c46a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: left 0.8rem center;
-            padding-left: 2rem;
+            background-position: left 1rem center;
+            padding-left: 2.5rem;
         }
 
         .submit-btn {
             width: 100%;
             padding: 0.8rem;
-            border-radius: 20px;
+            border-radius: 40px;
             border: none;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+            color: #0a0c12;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-top: 0.5rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
         }
 
         .submit-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
 
         /* Toast */
         .toast {
             position: fixed;
-            bottom: 80px;
+            bottom: 90px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, var(--success), #6a9c89);
+            background: linear-gradient(135deg, var(--success), #27ae60);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 40px;
+            padding: 0.7rem 1.5rem;
+            border-radius: 60px;
             font-size: 0.75rem;
-            font-weight: 600;
+            font-weight: 500;
             opacity: 0;
             transition: all 0.3s ease;
             z-index: 3000;
             pointer-events: none;
             white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .toast.show {
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-
-        .toast.error {
-            background: linear-gradient(135deg, var(--danger), #c44536);
-        }
     </style>
 </head>
 <body>
+    <div class="bg-particles" id="particles"></div>
+    <div class="glow-orb"></div>
+    <div class="glow-orb glow-orb-2"></div>
+
 <div class="app-container">
     <!-- Header -->
     <div class="app-header">
-        <div>
-            <div class="logo">✨ لوحتي</div>
-            <div class="designer-credit">تصميم: سعود</div>
+        <div class="logo-section">
+            <h1>✨ لوحتي</h1>
+            <p>تصميم: سعود</p>
         </div>
         <div class="time-section">
             <div id="current-time">--:--</div>
@@ -597,44 +692,53 @@
         </div>
     </div>
 
-    <!-- Greeting -->
-    <div class="greeting-section">
-        <div class="greeting" id="greeting-text">أهلاً بك 👋</div>
+    <!-- Greeting Card -->
+    <div class="greeting-card">
+        <div class="greeting" id="greeting-text">مرحباً بك 👋</div>
         <div class="date-display" id="hijri-date"></div>
     </div>
 
-    <!-- Quick Actions -->
-    <div class="quick-actions">
-        <button class="quick-btn primary" onclick="openModal('expense-modal')">
-            <span>💸</span> مصروف جديد
-        </button>
-        <button class="quick-btn" onclick="openModal('thought-modal')">
-            <span>📝</span> خاطرة جديدة
-        </button>
-    </div>
-
-    <!-- Stats -->
+    <!-- Stats Grid -->
     <div class="stats-grid">
         <div class="stat-card">
-            <div class="stat-icon">💰</div>
+            <div class="stat-header">
+                <span class="stat-icon">💰</span>
+                <span class="stat-label">الإجمالي</span>
+            </div>
             <div class="stat-value" id="total-expenses">٠</div>
-            <div class="stat-label">إجمالي المصروفات</div>
+            <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.2rem;">ريال سعودي</div>
         </div>
         <div class="stat-card">
-            <div class="stat-icon">💭</div>
+            <div class="stat-header">
+                <span class="stat-icon">📝</span>
+                <span class="stat-label">الخواطر</span>
+            </div>
             <div class="stat-value" id="total-thoughts">٠</div>
-            <div class="stat-label">خواطرك</div>
+            <div style="font-size: 0.6rem; color: var(--text-muted); margin-top: 0.2rem;">خاطرة مسجلة</div>
         </div>
     </div>
 
-    <!-- Tabs Navigation -->
+    <!-- Quick Actions -->
+    <div class="actions-section">
+        <div class="section-title">إجراءات سريعة</div>
+        <div class="action-buttons">
+            <button class="action-btn primary" onclick="openModal('expense-modal')">
+                <span>+</span> إضافة مصروف
+            </button>
+            <button class="action-btn" onclick="openModal('thought-modal')">
+                <span>✍️</span> إضافة خاطرة
+            </button>
+        </div>
+    </div>
+
+    <!-- Tabs -->
     <div class="tabs-nav">
         <button class="tab-btn active" data-tab="expenses-tab">
             <span class="tab-icon">💸</span>
             <span>المصروفات</span>
         </button>
         <button class="tab-btn" data-tab="thoughts-tab">
-            <span class="tab-icon">📝</span>
+            <span class="tab-icon">💭</span>
             <span>الخواطر</span>
         </button>
         <button class="tab-btn" data-tab="stats-tab">
@@ -645,38 +749,40 @@
 
     <!-- Content Area -->
     <div class="content-area">
-        <!-- Expenses Tab -->
         <div id="expenses-tab" class="tab-content active">
             <div id="expenses-list">
                 <div class="empty-state">
-                    <div class="empty-icon">💸</div>
-                    <p>لا توجد مصروفات بعد</p>
+                    <div class="empty-icon">📊</div>
+                    <p>لا توجد مصروفات مسجلة</p>
                 </div>
             </div>
         </div>
 
-        <!-- Thoughts Tab -->
         <div id="thoughts-tab" class="tab-content">
             <div id="thoughts-list">
                 <div class="empty-state">
-                    <div class="empty-icon">📝</div>
+                    <div class="empty-icon">💭</div>
                     <p>لا توجد خواطر بعد</p>
                 </div>
             </div>
         </div>
 
-        <!-- Stats Tab -->
         <div id="stats-tab" class="tab-content">
-            <div class="chart-container" id="category-chart">
-                <div class="empty-state">
-                    <div class="empty-icon">📊</div>
-                    <p>لا توجد بيانات كافية</p>
+            <div class="chart-container">
+                <div class="chart-title">توزيع المصروفات حسب الفئة</div>
+                <div id="category-chart">
+                    <div class="empty-state">
+                        <div class="empty-icon">📈</div>
+                        <p>لا توجد بيانات كافية</p>
+                    </div>
                 </div>
             </div>
-            <div class="stat-card" style="margin-top: 0.5rem;">
-                <div class="stat-icon">🏆</div>
-                <div class="stat-label">أعلى فئة مصروفات</div>
-                <div id="top-category" style="font-size: 1rem; font-weight: 700; color: var(--accent-gold); margin-top: 0.3rem;">-</div>
+            <div class="stat-card" style="margin-top: 0;">
+                <div class="stat-header">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-label">أعلى فئة إنفاق</span>
+                </div>
+                <div id="top-category" style="font-size: 1rem; font-weight: 600; color: var(--accent-gold); margin-top: 0.3rem;">-</div>
             </div>
         </div>
     </div>
@@ -686,13 +792,13 @@
 <div class="modal" id="expense-modal">
     <div class="modal-card">
         <div class="modal-header">
-            <div class="modal-title">💸 مصروف جديد</div>
+            <div class="modal-title">إضافة مصروف جديد</div>
             <button class="close-btn" onclick="closeModal('expense-modal')">✕</button>
         </div>
         <form id="expense-form" onsubmit="handleExpense(event)">
             <div class="form-group">
                 <label class="form-label">الوصف</label>
-                <input type="text" class="form-input" id="exp-desc" placeholder="ماذا أنفقت؟" required>
+                <input type="text" class="form-input" id="exp-desc" placeholder="مثال: قهوة، مواصلات..." required>
             </div>
             <div class="form-group">
                 <label class="form-label">المبلغ (ريال)</label>
@@ -711,7 +817,7 @@
                     <option value="أخرى">📦 أخرى</option>
                 </select>
             </div>
-            <button type="submit" class="submit-btn">💾 حفظ المصروف</button>
+            <button type="submit" class="submit-btn">حفظ المصروف</button>
         </form>
     </div>
 </div>
@@ -719,7 +825,7 @@
 <div class="modal" id="thought-modal">
     <div class="modal-card">
         <div class="modal-header">
-            <div class="modal-title">✍️ خاطرة جديدة</div>
+            <div class="modal-title">إضافة خاطرة جديدة</div>
             <button class="close-btn" onclick="closeModal('thought-modal')">✕</button>
         </div>
         <form id="thought-form" onsubmit="handleThought(event)">
@@ -728,20 +834,23 @@
                 <input type="text" class="form-input" id="thought-title" placeholder="عنوان مختصر" required>
             </div>
             <div class="form-group">
-                <label class="form-label">خاطرتك</label>
-                <textarea class="form-input" id="thought-content" placeholder="اكتب ما يدور في ذهنك..." required></textarea>
+                <label class="form-label">الخاطرة</label>
+                <textarea class="form-input" id="thought-content" placeholder="اكتب ما يدور في خاطرك..." required></textarea>
             </div>
             <div class="form-group">
                 <label class="form-label">المزاج</label>
                 <select class="form-input" id="thought-mood">
                     <option value="😊 سعيد">😊 سعيد</option>
-                    <option value="🤔 أفكر">🤔 أفكر</option>
+                    <option value="🤔 متفكر">🤔 متفكر</option>
                     <option value="😌 هادئ">😌 هادئ</option>
                     <option value="💪 متحمس">💪 متحمس</option>
                     <option value="❤️ ممتن">❤️ ممتن</option>
+                    <option value="😢 حزين">😢 حزين</option>
+                    <option value="😞 مكتئب">😞 مكتئب</option>
+                    <option value="😤 متوتر">😤 متوتر</option>
                 </select>
             </div>
-            <button type="submit" class="submit-btn">🌟 حفظ الخاطرة</button>
+            <button type="submit" class="submit-btn">حفظ الخاطرة</button>
         </form>
     </div>
 </div>
@@ -752,7 +861,25 @@
     let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
     let thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
 
+    // Create floating particles
+    function createParticles() {
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 6 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 12 + 's';
+            particle.style.animationDuration = Math.random() * 10 + 8 + 's';
+            container.appendChild(particle);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+        createParticles();
         updateDateTime();
         setInterval(updateDateTime, 60000);
         setGreeting();
@@ -764,30 +891,30 @@
     function updateDateTime() {
         const now = new Date();
         document.getElementById('current-time').textContent = now.toLocaleTimeString('ar-SA', {hour: '2-digit', minute: '2-digit'});
-        document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'short'});
+        document.getElementById('current-date').textContent = now.toLocaleDateString('ar-SA', {day: 'numeric', month: 'long', year: 'numeric'});
     }
 
     function updateHijriDate() {
         const now = new Date();
-        document.getElementById('hijri-date').textContent = now.toLocaleDateString('ar-SA-u-ca-islamic', {day: 'numeric', month: 'long'});
+        document.getElementById('hijri-date').textContent = now.toLocaleDateString('ar-SA-u-ca-islamic', {day: 'numeric', month: 'long', year: 'numeric'});
     }
 
     function setGreeting() {
         const hour = new Date().getHours();
         const greeting = document.getElementById('greeting-text');
-        if (hour < 12) greeting.textContent = 'صباح النور ☀️';
-        else if (hour < 17) greeting.textContent = 'طاب مساؤك 🌤️';
-        else greeting.textContent = 'مساء الخير 🌙';
+        if (hour < 12) greeting.textContent = 'صباح الخير ☀️';
+        else if (hour < 17) greeting.textContent = 'مساء الخير 🌤️';
+        else greeting.textContent = 'مساء النور 🌙';
     }
 
     function formatNum(num) {
         return num.toLocaleString('ar-SA');
     }
 
-    function showToast(msg, type = 'success') {
+    function showToast(msg) {
         const toast = document.getElementById('toast');
         toast.textContent = msg;
-        toast.className = `toast ${type} show`;
+        toast.classList.add('show');
         setTimeout(() => toast.classList.remove('show'), 2000);
     }
 
@@ -825,7 +952,7 @@
         expenses.unshift(expense);
         localStorage.setItem('expenses', JSON.stringify(expenses));
         closeModal('expense-modal');
-        showToast('✅ تم حفظ المصروف');
+        showToast('تم حفظ المصروف بنجاح');
         e.target.reset();
         updateUI();
     }
@@ -843,26 +970,26 @@
         thoughts.unshift(thought);
         localStorage.setItem('thoughts', JSON.stringify(thoughts));
         closeModal('thought-modal');
-        showToast('🌟 تم حفظ الخاطرة');
+        showToast('تم حفظ الخاطرة بنجاح');
         e.target.reset();
         updateUI();
     }
 
     function deleteExpense(id) {
-        if (confirm('🗑️ حذف هذا المصروف؟')) {
+        if (confirm('🗑️ هل تريد حذف هذا المصروف؟')) {
             expenses = expenses.filter(e => e.id !== id);
             localStorage.setItem('expenses', JSON.stringify(expenses));
             updateUI();
-            showToast('تم الحذف');
+            showToast('تم حذف المصروف');
         }
     }
 
     function deleteThought(id) {
-        if (confirm('🗑️ حذف هذه الخاطرة؟')) {
+        if (confirm('🗑️ هل تريد حذف هذه الخاطرة؟')) {
             thoughts = thoughts.filter(t => t.id !== id);
             localStorage.setItem('thoughts', JSON.stringify(thoughts));
             updateUI();
-            showToast('تم الحذف');
+            showToast('تم حذف الخاطرة');
         }
     }
 
@@ -878,17 +1005,17 @@
 
     function updateUI() {
         const totalExp = expenses.reduce((s, e) => s + e.amount, 0);
-        document.getElementById('total-expenses').textContent = formatNum(totalExp) + ' ر.س';
+        document.getElementById('total-expenses').textContent = formatNum(totalExp);
         document.getElementById('total-thoughts').textContent = formatNum(thoughts.length);
 
         const expensesDiv = document.getElementById('expenses-list');
         if (expenses.length === 0) {
-            expensesDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">💸</div><p>لا توجد مصروفات بعد</p></div>';
+            expensesDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><p>لا توجد مصروفات مسجلة</p></div>';
         } else {
             expensesDiv.innerHTML = expenses.map(exp => `
                 <div class="list-item" onclick="deleteExpense(${exp.id})">
                     <div class="item-info">
-                        <h4>${exp.category} - ${escapeHtml(exp.desc)}</h4>
+                        <h4>${exp.category} · ${escapeHtml(exp.desc)}</h4>
                         <p>${exp.date}</p>
                     </div>
                     <div class="item-amount">${formatNum(exp.amount)} ر.س</div>
@@ -898,12 +1025,12 @@
 
         const thoughtsDiv = document.getElementById('thoughts-list');
         if (thoughts.length === 0) {
-            thoughtsDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">📝</div><p>لا توجد خواطر بعد</p></div>';
+            thoughtsDiv.innerHTML = '<div class="empty-state"><div class="empty-icon">💭</div><p>لا توجد خواطر بعد</p></div>';
         } else {
             thoughtsDiv.innerHTML = thoughts.map(t => `
                 <div class="thought-card" onclick="deleteThought(${t.id})">
                     <div class="thought-header">
-                        <span class="thought-mood">${t.mood.split(' ')[0]}</span>
+                        <span class="thought-mood">${t.mood}</span>
                     </div>
                     <div class="thought-title">${escapeHtml(t.title)}</div>
                     <div class="thought-content">${escapeHtml(t.content)}</div>
@@ -917,7 +1044,7 @@
 
     function updateStats() {
         if (expenses.length === 0) {
-            document.getElementById('category-chart').innerHTML = '<div class="empty-state"><div class="empty-icon">📊</div><p>لا توجد بيانات كافية</p></div>';
+            document.getElementById('category-chart').innerHTML = '<div class="empty-state"><div class="empty-icon">📈</div><p>لا توجد بيانات كافية</p></div>';
             document.getElementById('top-category').textContent = '-';
             return;
         }
@@ -927,7 +1054,7 @@
         const maxVal = Math.max(...Object.values(cats));
         
         const chart = document.getElementById('category-chart');
-        chart.innerHTML = Object.entries(cats).map(([cat, val]) => `
+        chart.innerHTML = Object.entries(cats).sort((a, b) => b[1] - a[1]).map(([cat, val]) => `
             <div class="category-bar">
                 <div class="bar-label">${cat}</div>
                 <div class="bar-track">
